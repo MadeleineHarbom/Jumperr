@@ -18,9 +18,5 @@ public class Frontpage extends HttpServlet {
 
         response.getWriter().print("This is our Jumperr project!");
 
-        // Test
-        // test2
-        //ttest3
-
     }
 }
