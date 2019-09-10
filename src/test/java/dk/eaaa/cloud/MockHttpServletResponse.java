@@ -11,6 +11,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletResponse;
 
+import main.Frontpage;
+
 /**
  * This mock class is created to enable basic unit testing of the
  * {@link Frontpage} class. Only methods used in the unit test
