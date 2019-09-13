@@ -21,7 +21,7 @@
 	<div class="container">
 
 		<!-- navigations-menu -->
-		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #5cb85c">
 			<a class="navbar-brand" href="#">Jumperr</a>
 
 			<!-- ændrer udseendet på navigations-menuen på en mobil-device -->
@@ -54,26 +54,50 @@
 				</ul>
 			</div>
 		</nav>
-			<div class="row justify-content-left align-items-center"
-				style="height: 35vh">
-				<div class="col-4">
-					<div class="card">
-						<div class="card-body">
-							<form action="" autocomplete="off">
-								<div class="form-group">
-									<input type="text" class="form-control" name="username">
+
+		<div class="jumbotron">
+			<h1 class="display-4">Jumperr, world!</h1>
+			<p class="lead">This is a simple website that will help you get
+				to the places you want in the quickest way possible. Are you
+				interested in earning some money for your daily routes add some
+				jumpers to spilt the expanses!</p>
+			<hr class="my-4">
+			
+			<div class="row">
+				<div class="span12">
+					<form class="form-horizontal" action='' method="POST">
+						<fieldset>
+							<div class="control-group">
+								<!-- Username -->
+								<label class="control-label" for="username">Username</label>
+								<div class="controls">
+									<input type="text" id="username" name="username" placeholder=""
+										class="input-xlarge">
 								</div>
-								<div class="form-group">
-									<input type="password" class="form-control" name="password">
+							</div>
+							<div class="control-group">
+								<!-- Password-->
+								<label class="control-label" for="password">Password</label>
+								<div class="controls">
+									<input type="password" id="password" name="password"
+										placeholder="" class="input-xlarge">
 								</div>
-								<button type="button" id="sendlogin" class="btn btn-primary">login</button>
-							</form>
-						</div>
-					</div>
+							</div>
+							<div class="control-group m-1 align-left">
+								<!-- Button -->
+								<div class="controls">
+									<button class="btn btn-success">Login</button>
+								</div>
+							</div>
+						</fieldset>
+					</form>
 				</div>
 			</div>
-		
-		
+
+		</div>
+
+
+
 	</div>
 
 	<!-- Optional JavaScript -->
