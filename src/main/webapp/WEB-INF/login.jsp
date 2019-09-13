@@ -7,6 +7,9 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+<!-- our CSS -->
+<link rel="stylesheet" type="text/css" href="ourStyles.css"> 
+
 <!-- Bootstrap CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -22,7 +25,7 @@
 
 		<!-- navigations-menu -->
 		<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #5cb85c">
-			<a class="navbar-brand" href="#">Jumperr</a>
+			<a id="menuBanner" class="navbar-brand" href="#">Jumperr</a>
 
 			<!-- ændrer udseendet på navigations-menuen på en mobil-device -->
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
