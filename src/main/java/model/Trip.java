@@ -1,18 +1,20 @@
 package model;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class Trip {
 
-    private String date;
-    private String timeOfDeparture; // afgangstidspunkt
-    private String timeOfArrival; // ankomsttidspunkt
+    private LocalDate date;
+    private LocalTime timeOfDeparture; // afgangstidspunkt
+    private LocalTime timeOfArrival; // ankomsttidspunkt
     private String departureAddress; // afgangsadresse
     private String arrivalAddress; // ankomstadresse
     private User driver;
     private ArrayList<PickUpPoint> pickUpPoints = new ArrayList<>();
 
-    public Trip(String date, String timeOfDeparture, String timeOfArrival, String departureAddress,
+    public Trip(LocalDate date, LocalTime timeOfDeparture, LocalTime timeOfArrival, String departureAddress,
             String arrivalAddress, User driver, ArrayList<PickUpPoint> pickUpPoints) {
         this.date = date;
         this.timeOfDeparture = timeOfDeparture;
@@ -22,6 +24,17 @@ public class Trip {
         this.driver = driver;
         this.pickUpPoints = pickUpPoints;
     }
+    public Trip(LocalDate date, LocalTime timeOfDeparture, LocalTime timeOfArrival, String departureAddress,
+            String arrivalAddress, User driver) {
+        this.date = date;
+        this.timeOfDeparture = timeOfDeparture;
+        this.timeOfArrival = timeOfArrival;
+        this.departureAddress = departureAddress;
+        this.arrivalAddress = arrivalAddress;
+        this.driver = driver;
+        
+    }
+
 
     public String getDate() {
         return date;
