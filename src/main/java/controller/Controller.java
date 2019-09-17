@@ -55,4 +55,11 @@ public class Controller {
 
     }
 
+    public static void createTrip(String date, String timeOfDeparture, String timeOfArrival, String departureAddress,
+            String arrivalAddress, User user) {
+
+        Trip trip = new Trip(date, timeOfDeparture, timeOfArrival, departureAddress, arrivalAddress, user);
+        Storage.addTrip(trip);
+    }
+
 }

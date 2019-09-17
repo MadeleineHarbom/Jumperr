@@ -53,7 +53,7 @@
                     
                     <!--  Driver - (skal tilbyde et lift) -->
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Driver</a>
+                        <a class="nav-link" href="/DriverServlet">Driver</a>
                     </li>                                                            
                     
                     <!--  About - den har en dropdown-menu -->

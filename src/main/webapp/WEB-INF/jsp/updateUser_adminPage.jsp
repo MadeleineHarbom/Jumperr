@@ -12,12 +12,6 @@
   <!-- our CSS -->
   <link rel="stylesheet" type="text/css" href="../css/ourStyles.css"> 
   
-  <style>   
-    #error {
-       display:none;
-    }
-  </style>
-  
   <title>Update user</title>
 </head>
 <body>
@@ -58,7 +52,7 @@
                 
                 <!--  Driver - (skal tilbyde et lift) -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Driver</a>
+                    <a class="nav-link" href="/DriverServlet">Driver</a>
                 </li>                 
                 
                 <!--  About - den har en dropdown-menu -->
