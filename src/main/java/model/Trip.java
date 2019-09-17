@@ -5,6 +5,8 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class Trip {
+	private int id;
+	private static int counter = 0;
 
     private LocalDate date;
     private LocalTime timeOfDeparture; // afgangstidspunkt
@@ -23,6 +25,7 @@ public class Trip {
         this.arrivalAddress = arrivalAddress;
         this.driver = driver;
         this.pickUpPoints = pickUpPoints;
+        assignID();
     }
     public Trip(LocalDate date, LocalTime timeOfDeparture, LocalTime timeOfArrival, String departureAddress,
             String arrivalAddress, User driver) {
@@ -32,7 +35,12 @@ public class Trip {
         this.departureAddress = departureAddress;
         this.arrivalAddress = arrivalAddress;
         this.driver = driver;
-        
+        assignID();
+    }
+    
+    private void assignID() {
+    	this.id = Trip.counter;
+    	Trip.counter ++;
     }
 
 
@@ -90,6 +98,10 @@ public class Trip {
 
     public void setPickUpPoints(ArrayList<PickUpPoint> pickUpPoints) {
         this.pickUpPoints = pickUpPoints;
+    }
+    
+    public int getID() {
+    	return id;
     }
 
 }
