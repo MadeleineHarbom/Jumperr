@@ -55,7 +55,7 @@ public class DriverServlet extends HttpServlet {
 
         Controller.createTrip(date, timeOfDeparture, timeOfArrival, departureAddress, arrivalAddress, user);
 
-        response.sendRedirect("/");
+        response.sendRedirect("/ProfileSettings");
 
     }
 

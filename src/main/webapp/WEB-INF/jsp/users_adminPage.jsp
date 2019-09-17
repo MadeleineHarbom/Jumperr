@@ -76,7 +76,7 @@
                         </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">My profile</a>
-                            <a class="dropdown-item" href="#">Settings</a>
+                            <a class="dropdown-item" href="/ProfileSettings">Settings</a>
                             
                             <div class="dropdown-divider"></div>
                             

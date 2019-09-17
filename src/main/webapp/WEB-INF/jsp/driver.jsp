@@ -60,7 +60,7 @@
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="#">My profile</a>
-                        <a class="dropdown-item" href="#">Settings</a>
+                        <a class="dropdown-item" href="/ProfileSettings">Settings</a>
                         
                         <div class="dropdown-divider"></div>
                         
@@ -72,6 +72,70 @@
             </ul>
         </div>
     </nav>  
+    
+        <!-- Jumbotron - det er en form for header eller en udvidet header (hero-section) -->
+        <div class="jumbotron">               
+ 
+            <!-- trip-formular -->               
+            <main class="my-form">
+                <div class="container col-md-8">
+                    <div class="row justify-content-center">
+                        <div class="col-md-10">
+                            <!-- fejl meddelelse -->
+                            <div id="error" class="alert alert-danger" role="alert">${error}</div>  
+                                <div class="card">
+                                    <div class="card-header">Trip</div>
+                                    <div class="card-body">
+                                        <form name="my-form" action="DriverServlet" method="post">
+                                            <div class="form-group row">
+                                                <label for="full_name" class="col-md-4 col-form-label text-md-right">Date</label>
+                                                <div class="col-md-6">
+                                                    <input type="text" id="full_name" class="form-control" name="date" required="true">
+                                                </div>
+                                            </div>
+            
+                                            <div class="form-group row">
+                                                <label for="email_address" class="col-md-4 col-form-label text-md-right">Time of departure</label>
+                                                <div class="col-md-6">
+                                                    <input type="text" id="email_address" class="form-control" name="timeOfDeparture" required="true">
+                                                </div>
+                                            </div>
+            
+                                            <div class="form-group row">
+                                                <label for="address" class="col-md-4 col-form-label text-md-right">Time of arrival</label>
+                                                <div class="col-md-6">
+                                                    <input type="text" id="address" class="form-control" name="timeOfArrival" required="true">
+                                                </div>
+                                            </div>
+            
+                                            <div class="form-group row">
+                                                <label for="phoneNumber" class="col-md-4 col-form-label text-md-right">Departure address</label>
+                                                <div class="col-md-6">
+                                                    <input type="text" id="phoneNumber" class="form-control" name="departureAddress" required="true">
+                                                </div>
+                                            </div>
+            
+                                            <div class="form-group row">
+                                                <label for="username" class="col-md-4 col-form-label text-md-right">Arrival address</label>
+                                                <div class="col-md-6">
+                                                    <input type="text" id="username" class="form-control" name="arrivalAddress" required="true">
+                                                </div>
+                                            </div>           
+            
+                                            <div class="col-md-6 offset-md-4">
+                                                <button type="submit" class="btn btn-primary">
+                                                    Create trip
+                                                </button>
+                                            </div>
+                                      </form>
+                                    </div> <!-- card-body -->
+                                </div> <!-- card -->
+                            </div> <!-- yderste column -->
+                        </div> <!-- yderste row -->
+                    </div>  <!-- container i login formularen -->         
+               </main> <!-- login formularen -->
+           </div> <!-- jumbotron -->
+    
 </div>
 
     <!-- Optional JavaScript -->
