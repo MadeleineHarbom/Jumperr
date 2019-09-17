@@ -9,6 +9,12 @@ public class PickUpPoint {
 	private double km;
 	private double pris;
 	
+	public PickUpPoint(String afgangsAdresse, String ankomstAdresse) {
+	
+		this.afgangsAdresse = afgangsAdresse;
+		this.ankomstAdresse = ankomstAdresse;
+	}
+	
 	
 	
 	
