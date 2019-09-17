@@ -110,7 +110,7 @@
 	                    <th>TelephoneNumber</th>
 	                    <th>Username</th>
 	                    <th>Password</th>
-	                    <th>Status</th>
+	                    <th>Admin</th>
 	                    <th>Edit</th>
 	                    <th>Delete</th>        
 	              </tr>
@@ -126,7 +126,7 @@
 	                       <td><%= u.getTelephoneNumber() %></td>
 	                       <td><%= u.getUsername() %></td>
 	                       <td><%= u.getPassword() %></td>  
-	                       <td><%= u.getStatus() %></td>
+	                       <td><%= u.getAdmin() %></td>
 	                       <td><a href="/Update?userId=<%= u.getId() %>">Edit</a></td>
 	                       <td><a href="/Delete?userId=<%= u.getId() %>">Delete</a></td>
 	                     </tr>        

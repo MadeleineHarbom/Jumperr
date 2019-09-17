@@ -13,7 +13,7 @@ public class User implements Serializable {
     private int telephoneNumber;
     private String username;
     private String password;
-    private int status;
+    private int admin;
 
     public User(String name, String email, String address, int telephoneNumber, String username, String password) {
         this.id = Storage.getUsers().size() + 1;
@@ -23,7 +23,7 @@ public class User implements Serializable {
         this.telephoneNumber = telephoneNumber;
         this.username = username;
         this.password = password;
-        this.status = 2;
+        this.admin = 0;
     }
 
     public int getId() {
@@ -74,12 +74,12 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public int getStatus() {
-        return status;
+    public int getAdmin() {
+        return admin;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setAdmin(int admin) {
+        this.admin = admin;
     }
 
     public String getEmail() {

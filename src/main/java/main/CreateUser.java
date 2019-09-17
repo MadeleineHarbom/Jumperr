@@ -26,7 +26,7 @@ public class CreateUser extends HttpServlet {
         if (user == null) {
             request.getRequestDispatcher("/WEB-INF/jsp/createUser.jsp").forward(request, response);
 
-        } else if (user.getStatus() == 1) {
+        } else if (user.getAdmin() == 1) {
             request.getRequestDispatcher("/WEB-INF/jsp/createUser_adminPage.jsp").forward(request, response);
 
         } else {

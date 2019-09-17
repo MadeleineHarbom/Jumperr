@@ -23,7 +23,7 @@ public class Delete extends HttpServlet {
         String userId = request.getParameter("userId");
         User user1 = (User) request.getSession().getAttribute("user");
 
-        if (user1 != null && user1.getStatus() == 1) {
+        if (user1 != null && user1.getAdmin() == 1) {
 
             if (userId != null) {
 

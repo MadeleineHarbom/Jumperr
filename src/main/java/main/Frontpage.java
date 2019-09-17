@@ -38,7 +38,7 @@ public class Frontpage extends HttpServlet {
         } else {
 
             // hvis det er Admin
-            if (user.getStatus() == 1) {
+            if (user.getAdmin() == 1) {
 
                 request.setAttribute("users", Storage.getUsers());
                 request.setAttribute("username", user.getUsername());
