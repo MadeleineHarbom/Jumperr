@@ -36,27 +36,27 @@ public class Trip {
     }
 
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
-    public String getTimeOfDeparture() {
+    public LocalTime getTimeOfDeparture() {
         return timeOfDeparture;
     }
 
-    public void setTimeOfDeparture(String timeOfDeparture) {
+    public void setTimeOfDeparture(LocalTime timeOfDeparture) {
         this.timeOfDeparture = timeOfDeparture;
     }
 
-    public String getTimeOfArrival() {
+    public LocalTime getTimeOfArrival() {
         return timeOfArrival;
     }
 
-    public void setTimeOfArrival(String timeOfArrival) {
+    public void setTimeOfArrival(LocalTime timeOfArrival) {
         this.timeOfArrival = timeOfArrival;
     }
 
