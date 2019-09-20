@@ -101,5 +101,11 @@ public class Trip {
     public void setPickUpPoints(ArrayList<PickUpPoint> pickUpPoints) {
         this.pickUpPoints = pickUpPoints;
     }
+    
+    //Bare slet hvis det ikke bliver brugt
+    public String fileString() {
+    	return "Trip, " + date + ", " + timeOfDeparture + ", " + timeOfArrival + ", "
+    + departureAddress + "," + arrivalAddress + ", " + driver.getName() + "\n";
+    }
 
 }
