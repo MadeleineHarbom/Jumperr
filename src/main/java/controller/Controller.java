@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import javax.servlet.http.Part;
 
 import java.nio.channels.Channels;
+import java.nio.channels.WritableByteChannel;
 
 //////////////////////////////////////////////////
 //various imports
@@ -77,11 +78,12 @@ public class Controller {
     }
 
     public static void createUser(String name, String email, String address, int telephoneNumber, String username,
-            String password) {
+            String password) throws IOException {
 
         User user = new User(name, email, address, telephoneNumber, username, password);
         LocalStorage.addUser(user);
 
+        updateUsersInGoogleStorage(LocalStorage.getUsers(), "User.txt");
     }
 
     public static Trip getTripById(String tripId) {
@@ -113,15 +115,17 @@ public class Controller {
     }
 
     public static void createTrip(String date, String timeOfDeparture, String timeOfArrival, String departureAddress,
-            String arrivalAddress, User user) {
+            String arrivalAddress, User user) throws IOException {
 
         Trip trip = new Trip(date, timeOfDeparture, timeOfArrival, departureAddress, arrivalAddress, user);
         LocalStorage.addTrip(trip);
+
+        Controller.updateTripsInGoogleStorage(LocalStorage.getTrips(), "Trip.txt");
     }
 
     // opretter forbindelse til Google Storage Bucket samt returnerer et
     // bucket-objekt
-    public static Bucket getBucketConnection() throws IOException {
+    public static Bucket getGoogleStorageBucket() throws IOException {
         String bucketName = "jumperr.appspot.com";
         System.out.printf("Bucket name %s ", bucketName);
 
@@ -135,7 +139,7 @@ public class Controller {
 
     // opretter forbindelse til Google Storage Bucket samt returnerer et
     // storage-objekt
-    public static Storage getBucketConnection_storage() throws IOException {
+    public static Storage getGoogleStorage() throws IOException {
         String bucketName = "jumperr.appspot.com";
         System.out.printf("Bucket name %s ", bucketName);
 
@@ -150,7 +154,7 @@ public class Controller {
     // tilføjer dem til LocalStorage
     public static void downloadUsersFromGoogleStorage(String fileName) throws IOException {
         String dataFileName = fileName;
-        Blob blob = getBucketConnection_storage().get(BlobId.of(getBucketConnection().getName(), dataFileName));
+        Blob blob = getGoogleStorage().get(BlobId.of(getGoogleStorageBucket().getName(), dataFileName));
 
         ArrayList<String> lines = new ArrayList<>();
 
@@ -185,15 +189,35 @@ public class Controller {
         }
     }
 
-    public static void updateUsersInGoogleStorage(ArrayList<User> users, String uploadedFileName) {
+    // opdaterer User.txt filen i Google Storage Bucket
+    // bruges til create, update & delete -operationerne
+    public static void updateUsersInGoogleStorage(ArrayList<User> users, String fileName) throws IOException {
+        String dataFileName = fileName;
+        Blob blob = getGoogleStorage().get(BlobId.of(getGoogleStorageBucket().getName(), dataFileName));
 
+        String newString = "";
+        WritableByteChannel channel = blob.writer();
+
+        for (User u : users) {
+            newString = newString + u.getClass().getSimpleName() + ", ";
+            newString = newString + u.getName() + ", ";
+            newString = newString + u.getEmail() + ", ";
+            newString = newString + u.getAddress() + ", ";
+            newString = newString + u.getTelephoneNumber() + ", ";
+            newString = newString + u.getUsername() + ", ";
+            newString = newString + u.getPassword();
+            newString = newString + "\n";
+        }
+
+        channel.write(ByteBuffer.wrap(newString.getBytes()));
+        channel.close();
     }
 
     // henter alle trips fra Google Storage Bucket, opretter dem som objekter og
     // tilføjer dem til LocalStorage
     public static void downloadTripsFromGoogleStorage(String fileName) throws IOException {
         String dataFileName = fileName;
-        Blob blob = getBucketConnection_storage().get(BlobId.of(getBucketConnection().getName(), dataFileName));
+        Blob blob = getGoogleStorage().get(BlobId.of(getGoogleStorageBucket().getName(), dataFileName));
 
         ArrayList<String> lines = new ArrayList<>();
 
@@ -222,7 +246,27 @@ public class Controller {
         }
     }
 
-    public static void updateTripsInGoogleStorage(ArrayList<User> users, String uploadedFileName) {
+    // opdaterer Trip.txt filen i Google Storage Bucket
+    // bruges til create, update & delete -operationerne
+    public static void updateTripsInGoogleStorage(ArrayList<Trip> trips, String fileName) throws IOException {
+        String dataFileName = fileName;
+        Blob blob = getGoogleStorage().get(BlobId.of(getGoogleStorageBucket().getName(), dataFileName));
+
+        String newString = "";
+        WritableByteChannel channel = blob.writer();
+
+        for (Trip t : trips) {
+            newString = newString + t.getClass().getSimpleName() + ", ";
+            newString = newString + t.getDate() + ", ";
+            newString = newString + t.getTimeOfDeparture() + ", ";
+            newString = newString + t.getTimeOfArrival() + ", ";
+            newString = newString + t.getDepartureAddress() + ", ";
+            newString = newString + t.getArrivalAddress();
+            newString = newString + "\n";
+        }
+
+        channel.write(ByteBuffer.wrap(newString.getBytes()));
+        channel.close();
 
     }
 

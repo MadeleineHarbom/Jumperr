@@ -31,12 +31,16 @@ public class Delete extends HttpServlet {
                 User user2 = Controller.getUserById(userId);
                 LocalStorage.removeUser(user2);
 
+                Controller.updateUsersInGoogleStorage(LocalStorage.getUsers(), "User.txt");
+
                 response.sendRedirect("/");
                 return;
 
             } else if (tripId != null) {
                 Trip trip = Controller.getTripById(tripId);
                 LocalStorage.removeTrip(trip);
+
+                Controller.updateTripsInGoogleStorage(LocalStorage.getTrips(), "Trip.txt");
                 response.sendRedirect("/Trips");
                 return;
             }

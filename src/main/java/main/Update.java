@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import controller.Controller;
 import model.Trip;
 import model.User;
+import storage.LocalStorage;
 
 @WebServlet("/Update")
 public class Update extends HttpServlet {
@@ -70,6 +71,8 @@ public class Update extends HttpServlet {
         String password = request.getParameter("password");
 
         Controller.updateUser(userId, email, name, address, telephoneNumber, username, password);
+
+        Controller.updateUsersInGoogleStorage(LocalStorage.getUsers(), "User.txt");
 
         response.sendRedirect("/");
     }

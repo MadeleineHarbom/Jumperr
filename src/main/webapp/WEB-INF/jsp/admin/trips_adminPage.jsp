@@ -102,6 +102,7 @@
             <table class="table table-striped table-responsive">
                 <thead>
                   <tr>
+                        <th>ID</th>
                         <th>Day</th>
                         <th>Departure</th>
                         <th>Arrival</th>
@@ -118,7 +119,8 @@
                       for(Trip t : LocalStorage.getTrips()) {
                   %>
                         
-                         <tr>
+                        <tr>
+                           <td><%= t.getId()   %></td>
                            <td><%= t.getDate()    %></td>
                            <td><%= t.getTimeOfDeparture()   %></td>
                            <td><%= t.getTimeOfArrival()   %></td>
@@ -128,7 +130,7 @@
                            
                            <td><a href="/Update?tripId=<%= t.getId() %>">Edit</a></td>
                            <td><a href="/Delete?tripId=<%= t.getId() %>">Delete</a></td>
-                         </tr>        
+                        </tr>        
                      <% } %>
                 </tbody>
             </table>              

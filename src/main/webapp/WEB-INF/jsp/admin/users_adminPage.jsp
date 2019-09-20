@@ -104,7 +104,7 @@
             <table class="table table-striped table-responsive">
                 <thead>
                   <tr>
-                        <th>Id</th>
+                        <th>ID</th>
                         <th>Name</th>
                         <th>E-mail</th>
                         <th>Address</th>

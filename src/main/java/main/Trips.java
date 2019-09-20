@@ -47,6 +47,8 @@ public class Trips extends HttpServlet {
 
         Controller.updateTrip(tripId, date, timeOfDeparture, timeOfArrival, departureAddress, arrivalAddress, user);
 
+        Controller.updateTripsInGoogleStorage(LocalStorage.getTrips(), "Trip.txt");
+
         response.sendRedirect("/Trips");
 
     }
