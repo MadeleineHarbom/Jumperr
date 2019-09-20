@@ -32,8 +32,10 @@ public class Admin_Trips extends HttpServlet{
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
 		//Just some init shit
-		if (!(Storage.getTrips() != null || Storage.getTrips().size() > 0 )) { //eclipse vil ha !=null check ><
+		if (Storage.getTrips() == null || Storage.getTrips().size() == 0 ) { //eclipse vil ha !=null check ><
 			init_trips();
+			System.out.println("Trips inited");
+			
 		}
 		
 		

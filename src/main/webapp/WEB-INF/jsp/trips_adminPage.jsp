@@ -91,7 +91,7 @@
     
         <!-- Jumbotron - det er en form for header eller en udvidet header (hero-section) -->
         <div class="jumbotron">
-	        <h1>Users</h1>
+	        <h1>Trips</h1>
 	        
 	        <!-- Hi <brugernavn> -->
 	        <p>Hi ${username}!</p>
@@ -123,8 +123,8 @@
 	                       <td><%= t.getArrivalAddress()   %></td>
 	                       <td><%= t.getDriver().getName()   %></td>
 	                       
-	                       <td><a href="/Update?userId=<%= t.getID %>">Edit</a></td>
-	                       <td><a href="/Delete?userId=<%= t.getID %>">Delete</a></td>
+	                       <td><a href="/Update?userId=<%= t.getID() %>">Edit</a></td>
+	                       <td><a href="/Delete?userId=<%= t.getID() %>">Delete</a></td>
 	                     </tr>        
 	                 <% } %>
 	            </tbody>
