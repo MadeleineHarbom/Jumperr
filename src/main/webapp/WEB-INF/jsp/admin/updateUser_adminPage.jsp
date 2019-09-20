@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" import="model.*,storage.Storage" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,7 +12,7 @@
   <!-- our CSS -->
   <link rel="stylesheet" type="text/css" href="../css/ourStyles.css"> 
   
-  <title>Driver</title>
+  <title>Update user</title>
 </head>
 <body>
 
@@ -37,7 +37,7 @@
                 
                 <!--  Trips -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Trips</a>
+                    <a class="nav-link" href="Trips">Trips</a>
                 </li>                   
                 
                 <!--  Register user -->
@@ -52,7 +52,7 @@
                 
                 <!--  Driver - (skal tilbyde et lift) -->
                 <li class="nav-item">
-                    <a class="nav-link active" href="/DriverServlet">Driver</a>
+                    <a class="nav-link" href="/Driver">Driver</a>
                 </li>                 
                 
                 <!--  About - den har en dropdown-menu -->
@@ -61,10 +61,10 @@
                         About
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">About us</a>
-                        <a class="dropdown-item" href="#">FAQ</a>
+                        <a class="dropdown-item" href="/AboutUs">About us</a>
+                        <a class="dropdown-item" href="/FAQ">FAQ</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Contact us</a>
+                        <a class="dropdown-item" href="/ContactUs">Contact us</a>
                     </div>
                 </li>
                 
@@ -74,7 +74,7 @@
                         Profile
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">My profile</a>
+                        <a class="dropdown-item" href="/MyProfile">My profile</a>
                         <a class="dropdown-item" href="/ProfileSettings">Settings</a>
                         
                         <div class="dropdown-divider"></div>
@@ -91,7 +91,7 @@
         <!-- Jumbotron - det er en form for header eller en udvidet header (hero-section) -->
         <div class="jumbotron">               
  
-            <!-- trip-formular -->               
+            <!-- login-formular -->               
             <main class="my-form">
                 <div class="container col-md-8">
                     <div class="row justify-content-center">
@@ -99,65 +99,81 @@
                             <!-- fejl meddelelse -->
                             <div id="error" class="alert alert-danger" role="alert">${error}</div>  
                                 <div class="card">
-                                    <div class="card-header">Trip</div>
+                                    <div class="card-header">Update</div>
                                     <div class="card-body">
-                                        <form name="my-form" action="DriverServlet" method="post">
+                                        <form name="my-form" action="Update" method="post">
                                             <div class="form-group row">
-                                                <label for="full_name" class="col-md-4 col-form-label text-md-right">Date</label>
+                                                <label for="full_name" class="col-md-4 col-form-label text-md-right">Full Name</label>
                                                 <div class="col-md-6">
-                                                    <input type="text" id="full_name" class="form-control" name="date" required="true">
+                                                    <input type="text" id="full_name" class="form-control" name="name" value="${name}" required="true">
                                                 </div>
                                             </div>
             
                                             <div class="form-group row">
-                                                <label for="email_address" class="col-md-4 col-form-label text-md-right">Time of departure</label>
+                                                <label for="email_address" class="col-md-4 col-form-label text-md-right">E-mail Address</label>
                                                 <div class="col-md-6">
-                                                    <input type="text" id="email_address" class="form-control" name="timeOfDeparture" required="true">
+                                                    <input type="email" id="email_address" class="form-control" name="email" value="${email}" required="true">
                                                 </div>
                                             </div>
             
                                             <div class="form-group row">
-                                                <label for="address" class="col-md-4 col-form-label text-md-right">Time of arrival</label>
+                                                <label for="address" class="col-md-4 col-form-label text-md-right">Address</label>
                                                 <div class="col-md-6">
-                                                    <input type="text" id="address" class="form-control" name="timeOfArrival" required="true">
+                                                    <input type="text" id="address" class="form-control" name="address" value="${address}" required="true">
                                                 </div>
                                             </div>
             
                                             <div class="form-group row">
-                                                <label for="phoneNumber" class="col-md-4 col-form-label text-md-right">Departure address</label>
+                                                <label for="phoneNumber" class="col-md-4 col-form-label text-md-right">Phone Number</label>
                                                 <div class="col-md-6">
-                                                    <input type="text" id="phoneNumber" class="form-control" name="departureAddress" required="true">
+                                                    <input type="tel" id="phoneNumber" class="form-control" name="telephoneNumber" value="${telephoneNumber}" required="true">
                                                 </div>
                                             </div>
             
                                             <div class="form-group row">
-                                                <label for="username" class="col-md-4 col-form-label text-md-right">Arrival address</label>
+                                                <label for="username" class="col-md-4 col-form-label text-md-right">Username</label>
                                                 <div class="col-md-6">
-                                                    <input type="text" id="username" class="form-control" name="arrivalAddress" required="true">
+                                                    <input type="text" id="username" class="form-control" name="username" value="${username}" required="true">
                                                 </div>
-                                            </div>           
+                                            </div>
+            
+                                            <div class="form-group row">
+                                                <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                                                <div class="col-md-6">
+                                                    <input type="text" id="password" class="form-control" name="password" value="${password}" required="true">
+                                                </div>
+                                            </div>
+                                                  
+                                            <!-- skjult felt der indeholder user-id -->
+                                            <input type="hidden" value="${userId}" name="userId">                                     
             
                                             <div class="col-md-6 offset-md-4">
                                                 <button type="submit" class="btn btn-primary">
-                                                    Create trip
+                                                Update
                                                 </button>
                                             </div>
                                       </form>
-                                    </div> <!-- card-body -->
+                                   </div> <!-- card-body -->
                                 </div> <!-- card -->
                             </div> <!-- yderste column -->
                         </div> <!-- yderste row -->
                     </div>  <!-- container i login formularen -->         
                </main> <!-- login formularen -->
            </div> <!-- jumbotron -->
-</div> <!-- yderste div container -->
-
+    </div> <!-- yderste container -->   
+    
+     <!-- hvis der er en fejlmeddelelse vises den med bootstrap ellers er den skjult -->
+     <script> 
+     if(document.querySelector("#error").innerHTML.trim() != ""){
+         document.querySelector("#error").style.display = "block";
+     } 
+     </script>    
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
-
 
 </body>
 </html>

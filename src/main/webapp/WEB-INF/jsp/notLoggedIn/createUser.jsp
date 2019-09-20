@@ -46,10 +46,10 @@
                         About
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">About us</a>
-                        <a class="dropdown-item" href="#">FAQ</a>
+                        <a class="dropdown-item" href="/AboutUs">About us</a>
+                        <a class="dropdown-item" href="/FAQ">FAQ</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Contact us</a>
+                        <a class="dropdown-item" href="/ContactUs">Contact us</a>
                     </div>
                 </li>
                                                   
@@ -71,6 +71,7 @@
                                     <div class="card-header">Register</div>
                                     <div class="card-body">
 			                            <form name="my-form" action="CreateUser" method="post">
+			                            
 			                                <div class="form-group row">
 			                                    <label for="full_name" class="col-md-4 col-form-label text-md-right">Full Name</label>
 			                                    <div class="col-md-6">
@@ -81,7 +82,7 @@
 			                                <div class="form-group row">
 			                                    <label for="email_address" class="col-md-4 col-form-label text-md-right">E-mail Address</label>
 			                                    <div class="col-md-6">
-			                                        <input type="text" id="email_address" class="form-control" name="email" required="true">
+			                                        <input type="email" id="email_address" class="form-control" name="email" required="true">
 			                                    </div>
 			                                </div>
 			
@@ -95,7 +96,7 @@
 			                                <div class="form-group row">
 			                                    <label for="phoneNumber" class="col-md-4 col-form-label text-md-right">Phone Number</label>
 			                                    <div class="col-md-6">
-			                                        <input type="text" id="phoneNumber" class="form-control" name="telephoneNumber" required="true">
+			                                        <input type="tel" id="phoneNumber" class="form-control" name="telephoneNumber" required="true">
 			                                    </div>
 			                                </div>
 			

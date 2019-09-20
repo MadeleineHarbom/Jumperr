@@ -12,7 +12,7 @@
   <!-- our CSS -->
   <link rel="stylesheet" type="text/css" href="../css/ourStyles.css"> 
   
-  <title>Update user</title>
+  <title>Registration</title>
 </head>
 <body>
 
@@ -37,12 +37,12 @@
                 
                 <!--  Trips -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Trips</a>
+                    <a class="nav-link" href="/Trips">Trips</a>
                 </li>                   
                 
                 <!--  Register user -->
                 <li class="nav-item">
-                    <a class="nav-link" href="/CreateUser">Register</a>
+                    <a class="nav-link active" href="/CreateUser">Register</a>
                 </li>
                                    
                 <!--  Jumper - (skal finde et lift)  -->
@@ -52,7 +52,7 @@
                 
                 <!--  Driver - (skal tilbyde et lift) -->
                 <li class="nav-item">
-                    <a class="nav-link" href="/DriverServlet">Driver</a>
+                    <a class="nav-link" href="/Driver">Driver</a>
                 </li>                 
                 
                 <!--  About - den har en dropdown-menu -->
@@ -61,10 +61,10 @@
                         About
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">About us</a>
-                        <a class="dropdown-item" href="#">FAQ</a>
+                        <a class="dropdown-item" href="/AboutUs">About us</a>
+                        <a class="dropdown-item" href="/FAQ">FAQ</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Contact us</a>
+                        <a class="dropdown-item" href="/ContactUs">Contact us</a>
                     </div>
                 </li>
                 
@@ -74,7 +74,7 @@
                         Profile
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">My profile</a>
+                        <a class="dropdown-item" href="/MyProfile">My profile</a>
                         <a class="dropdown-item" href="/ProfileSettings">Settings</a>
                         
                         <div class="dropdown-divider"></div>
@@ -99,68 +99,66 @@
                             <!-- fejl meddelelse -->
                             <div id="error" class="alert alert-danger" role="alert">${error}</div>  
                                 <div class="card">
-                                    <div class="card-header">Update</div>
+                                    <div class="card-header">Register</div>
                                     <div class="card-body">
-	                                    <form name="my-form" action="Update" method="post">
-	                                        <div class="form-group row">
-	                                            <label for="full_name" class="col-md-4 col-form-label text-md-right">Full Name</label>
-	                                            <div class="col-md-6">
-	                                                <input type="text" id="full_name" class="form-control" name="name" value="${name}" required="true">
-	                                            </div>
-	                                        </div>
-	        
-	                                        <div class="form-group row">
-	                                            <label for="email_address" class="col-md-4 col-form-label text-md-right">E-mail Address</label>
-	                                            <div class="col-md-6">
-	                                                <input type="text" id="email_address" class="form-control" name="email" value="${email}" required="true">
-	                                            </div>
-	                                        </div>
-	        
-	                                        <div class="form-group row">
-	                                            <label for="address" class="col-md-4 col-form-label text-md-right">Address</label>
-	                                            <div class="col-md-6">
-	                                                <input type="text" id="address" class="form-control" name="address" value="${address}" required="true">
-	                                            </div>
-	                                        </div>
-	        
-	                                        <div class="form-group row">
-	                                            <label for="phoneNumber" class="col-md-4 col-form-label text-md-right">Phone Number</label>
-	                                            <div class="col-md-6">
-	                                                <input type="text" id="phoneNumber" class="form-control" name="telephoneNumber" value="${telephoneNumber}" required="true">
-	                                            </div>
-	                                        </div>
-	        
-	                                        <div class="form-group row">
-	                                            <label for="username" class="col-md-4 col-form-label text-md-right">Username</label>
-	                                            <div class="col-md-6">
-	                                                <input type="text" id="username" class="form-control" name="username" value="${username}" required="true">
-	                                            </div>
-	                                        </div>
-	        
-	                                        <div class="form-group row">
-	                                            <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
-	                                            <div class="col-md-6">
-	                                                <input type="text" id="password" class="form-control" name="password" value="${password}" required="true">
-	                                            </div>
-	                                        </div>
-	                                              
-									        <!-- skjult felt der indeholder user-id -->
-									        <input type="hidden" value="${userId}" name="userId">								      
-	        
-	                                        <div class="col-md-6 offset-md-4">
-	                                            <button type="submit" class="btn btn-primary">
-	                                            Update
-	                                            </button>
-	                                        </div>
+                                        <form name="my-form" action="CreateUser" method="post">
+                                            
+                                            <div class="form-group row">
+                                                <label for="full_name" class="col-md-4 col-form-label text-md-right">Full Name</label>
+                                                <div class="col-md-6">
+                                                    <input type="text" id="full_name" class="form-control" name="name" required="true">
+                                                </div>
+                                            </div>
+            
+                                            <div class="form-group row">
+                                                <label for="email_address" class="col-md-4 col-form-label text-md-right">E-mail Address</label>
+                                                <div class="col-md-6">
+                                                    <input type="email" id="email_address" class="form-control" name="email" required="true">
+                                                </div>
+                                            </div>
+            
+                                            <div class="form-group row">
+                                                <label for="address" class="col-md-4 col-form-label text-md-right">Address</label>
+                                                <div class="col-md-6">
+                                                    <input type="text" id="address" class="form-control" name="address" required="true">
+                                                </div>
+                                            </div>
+            
+                                            <div class="form-group row">
+                                                <label for="phoneNumber" class="col-md-4 col-form-label text-md-right">Phone Number</label>
+                                                <div class="col-md-6">
+                                                    <input type="tel" id="phoneNumber" class="form-control" name="telephoneNumber" required="true">
+                                                </div>
+                                            </div>
+            
+                                            <div class="form-group row">
+                                                <label for="username" class="col-md-4 col-form-label text-md-right">Username</label>
+                                                <div class="col-md-6">
+                                                    <input type="text" id="username" class="form-control" name="username" required="true">
+                                                </div>
+                                            </div>
+            
+                                            <div class="form-group row">
+                                                <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                                                <div class="col-md-6">
+                                                    <input type="text" id="password" class="form-control" name="password" required="true">
+                                                </div>
+                                            </div>
+            
+                                            <div class="col-md-6 offset-md-4">
+                                                <button type="submit" class="btn btn-primary">
+                                                Register
+                                                </button>
+                                            </div>
                                       </form>
-                                   </div> <!-- card-body -->
+                                    </div> <!-- card-body -->
                                 </div> <!-- card -->
                             </div> <!-- yderste column -->
                         </div> <!-- yderste row -->
                     </div>  <!-- container i login formularen -->         
                </main> <!-- login formularen -->
            </div> <!-- jumbotron -->
-    </div> <!-- yderste container -->   
+     </div> <!-- yderste container -->
     
      <!-- hvis der er en fejlmeddelelse vises den med bootstrap ellers er den skjult -->
      <script> 

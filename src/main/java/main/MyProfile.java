@@ -6,16 +6,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import model.User;
 
-@WebServlet("/Jumper")
-public class Jumper extends HttpServlet {
-
+@WebServlet("/MyProfile")
+public class MyProfile extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         User user = (User) request.getSession().getAttribute("user");
 
         if (user == null) {
@@ -27,11 +28,11 @@ public class Jumper extends HttpServlet {
             // hvis det er Admin
             if (user.getAdmin() == 1) {
 
-                request.getRequestDispatcher("/WEB-INF/jsp/admin/jumper_adminPage.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/jsp/admin/myProfile_adminPage.jsp").forward(request, response);
 
             } else {
 
-                request.getRequestDispatcher("/WEB-INF/jsp/loggedIn/jumper.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/jsp/loggedIn/myProfile.jsp").forward(request, response);
             }
         }
     }
@@ -41,4 +42,5 @@ public class Jumper extends HttpServlet {
             throws ServletException, IOException {
 
     }
+
 }

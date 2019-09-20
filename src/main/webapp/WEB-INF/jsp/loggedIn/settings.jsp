@@ -29,21 +29,6 @@
         
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-            
-                <!--  Home -->
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
-                </li>
-                
-                <!--  Trips -->
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Trips</a>
-                </li>                   
-                
-                <!--  Register user -->
-                <li class="nav-item">
-                    <a class="nav-link" href="/CreateUser">Register</a>
-                </li>
                                    
                 <!--  Jumper - (skal finde et lift)  -->
                 <li class="nav-item">
@@ -52,7 +37,7 @@
                 
                 <!--  Driver - (skal tilbyde et lift) -->
                 <li class="nav-item">
-                    <a class="nav-link active" href="/DriverServlet">Driver</a>
+                    <a class="nav-link" href="/Driver">Driver</a>
                 </li>                 
                 
                 <!--  About - den har en dropdown-menu -->
@@ -61,20 +46,20 @@
                         About
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">About us</a>
-                        <a class="dropdown-item" href="#">FAQ</a>
+                        <a class="dropdown-item" href="/AboutUs">About us</a>
+                        <a class="dropdown-item" href="/FAQ">FAQ</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Contact us</a>
+                        <a class="dropdown-item" href="/ContactUs">Contact us</a>
                     </div>
                 </li>
                 
                 <!--  Profile -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" data-toggle="dropdown">                            
+                    <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown2" data-toggle="dropdown">                            
                         Profile
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">My profile</a>
+                        <a class="dropdown-item" href="/MyProfile">My profile</a>
                         <a class="dropdown-item" href="/ProfileSettings">Settings</a>
                         
                         <div class="dropdown-divider"></div>

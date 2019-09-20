@@ -16,7 +16,7 @@ public class User implements Serializable {
     private int admin;
 
     public User(String name, String email, String address, int telephoneNumber, String username, String password) {
-        this.id = Storage.getUsers().size() + 1;
+        this.id = generateUniqueID();
         this.name = name;
         this.email = email;
         this.address = address;
@@ -24,6 +24,20 @@ public class User implements Serializable {
         this.username = username;
         this.password = password;
         this.admin = 0;
+    }
+
+    public int generateUniqueID() {
+        int id = 0;
+
+        // hvis det er første bruger, får brugeren ID = 1 ellers får brugeren den sidste
+        // brugeres id +1
+        if (Storage.getUsers().size() == 0) {
+            id = 1;
+        } else {
+            int lastUserIndex = Storage.getUsers().size() - 1;
+            id = Storage.getUsers().get(lastUserIndex).id + 1;
+        }
+        return id;
     }
 
     public int getId() {

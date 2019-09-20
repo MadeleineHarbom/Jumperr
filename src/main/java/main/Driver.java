@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import controller.Controller;
 import model.User;
 
-@WebServlet("/DriverServlet")
-public class DriverServlet extends HttpServlet {
+@WebServlet("/Driver")
+public class Driver extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     @Override
@@ -21,8 +21,7 @@ public class DriverServlet extends HttpServlet {
         User user = (User) request.getSession().getAttribute("user");
 
         if (user == null) {
-            // initialiserer nogle trips-objekter
-            // init_trips();
+
             response.sendRedirect("/");
 
         } else {
@@ -30,11 +29,11 @@ public class DriverServlet extends HttpServlet {
             // hvis det er Admin
             if (user.getAdmin() == 1) {
 
-                request.getRequestDispatcher("/WEB-INF/jsp/driver_adminPage.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/jsp/admin/driver_adminPage.jsp").forward(request, response);
 
             } else {
 
-                request.getRequestDispatcher("/WEB-INF/jsp/driver.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/jsp/loggedIn/driver.jsp").forward(request, response);
             }
         }
 

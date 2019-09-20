@@ -35,7 +35,7 @@ public class Update extends HttpServlet {
                 request.setAttribute("username", user2.getUsername());
                 request.setAttribute("password", user2.getPassword());
 
-                request.getRequestDispatcher("/WEB-INF/jsp/updateUser_adminPage.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/jsp/admin/updateUser_adminPage.jsp").forward(request, response);
 
             }
         } else {

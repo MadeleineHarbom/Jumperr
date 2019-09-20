@@ -24,10 +24,10 @@ public class CreateUser extends HttpServlet {
         // hvis en bruger ikke er logget på eller er Admin kan CreateUser-siden vises -
         // ellers hvis en almindelig bruger er logget på navigeres man til forsiden
         if (user == null) {
-            request.getRequestDispatcher("/WEB-INF/jsp/createUser.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/jsp/notLoggedIn/createUser.jsp").forward(request, response);
 
         } else if (user.getAdmin() == 1) {
-            request.getRequestDispatcher("/WEB-INF/jsp/createUser_adminPage.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/jsp/admin/createUser_adminPage.jsp").forward(request, response);
 
         } else {
             response.sendRedirect("/");

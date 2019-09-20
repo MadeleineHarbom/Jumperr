@@ -38,7 +38,7 @@
                     
                     <!--  Trips -->
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Trips</a>
+                        <a class="nav-link" href="/Trips">Trips</a>
                     </li>                    
                     
                     <!--  Register user -->
@@ -53,37 +53,38 @@
                     
                     <!--  Driver - (skal tilbyde et lift) -->
                     <li class="nav-item">
-                        <a class="nav-link" href="/DriverServlet">Driver</a>
+                        <a class="nav-link" href="/Driver">Driver</a>
                     </li>                                                            
                     
-                    <!--  About - den har en dropdown-menu -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">
-                            About
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">About us</a>
-                            <a class="dropdown-item" href="#">FAQ</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Contact us</a>
-                        </div>
-                    </li>
-                    
-                    <!--  Profile -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" data-toggle="dropdown">                            
-                            Profile
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">My profile</a>
-                            <a class="dropdown-item" href="/ProfileSettings">Settings</a>
-                            
-                            <div class="dropdown-divider"></div>
-                            
-                            <!--  Logout -->
-                            <a class="dropdown-item" href="/Logout">Logout</a>
-                        </div>
-                    </li>  
+                <!--  About - den har en dropdown-menu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">
+                        About
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/AboutUs">About us</a>
+                        <a class="dropdown-item" href="/FAQ">FAQ</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/ContactUs">Contact us</a>
+                    </div>
+                </li>
+                
+                <!--  Profile -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" data-toggle="dropdown">                            
+                        Profile
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/MyProfile">My profile</a>
+                        <a class="dropdown-item" href="/ProfileSettings">Settings</a>
+                        
+                        <div class="dropdown-divider"></div>
+                        
+                        <!--  Logout -->
+                        <a class="dropdown-item" href="/Logout">Logout</a>
+                    </div>
+                </li>
+ 
                                     
                 </ul>
             </div>
@@ -91,48 +92,48 @@
     
         <!-- Jumbotron - det er en form for header eller en udvidet header (hero-section) -->
         <div class="jumbotron">
-	        <h1>Users</h1>
-	        
-	        <!-- Hi <brugernavn> -->
-	        <p>Hi ${username}!</p>
-	        
-	        <br/>
-	        <br/>
-	        
-	        <!-- tabel med brugere i systemet -->
-	        <table class="table table-striped table-responsive">
-	            <thead>
-	              <tr>
-	                    <th>Id</th>
-	                    <th>Name</th>
-	                    <th>E-mail</th>
-	                    <th>Address</th>
-	                    <th>TelephoneNumber</th>
-	                    <th>Username</th>
-	                    <th>Password</th>
-	                    <th>Admin</th>
-	                    <th>Edit</th>
-	                    <th>Delete</th>        
-	              </tr>
-	            </thead>
-	            <tbody>
-	              <% for(int i = 0; i < Storage.getUsers().size(); i++) { %>
-	                     <% User u = Storage.getUsers().get(i); %>
-	                     <tr>
-	                       <td><%= u.getId()    %></td>
-	                       <td><%= u.getName()  %></td>
-	                       <td><%= u.getEmail() %></td>
-	                       <td><%= u.getAddress() %></td>
-	                       <td><%= u.getTelephoneNumber() %></td>
-	                       <td><%= u.getUsername() %></td>
-	                       <td><%= u.getPassword() %></td>  
-	                       <td><%= u.getAdmin() %></td>
-	                       <td><a href="/Update?userId=<%= u.getId() %>">Edit</a></td>
-	                       <td><a href="/Delete?userId=<%= u.getId() %>">Delete</a></td>
-	                     </tr>        
-	                 <% } %>
-	            </tbody>
-	        </table>              
+            <h1>Users</h1>
+            
+            <!-- Hi <brugernavn> -->
+            <p>Hi ${username}!</p>
+            
+            <br/>
+            <br/>
+            
+            <!-- tabel med brugere i systemet -->
+            <table class="table table-striped table-responsive">
+                <thead>
+                  <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>E-mail</th>
+                        <th>Address</th>
+                        <th>TelephoneNumber</th>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>Admin</th>
+                        <th>Edit</th>
+                        <th>Delete</th>        
+                  </tr>
+                </thead>
+                <tbody>
+                  <% for(int i = 0; i < Storage.getUsers().size(); i++) { %>
+                         <% User u = Storage.getUsers().get(i); %>
+                         <tr>
+                           <td><%= u.getId()    %></td>
+                           <td><%= u.getName()  %></td>
+                           <td><%= u.getEmail() %></td>
+                           <td><%= u.getAddress() %></td>
+                           <td><%= u.getTelephoneNumber() %></td>
+                           <td><%= u.getUsername() %></td>
+                           <td><%= u.getPassword() %></td>  
+                           <td><%= u.getAdmin() %></td>
+                           <td><a href="/Update?userId=<%= u.getId() %>">Edit</a></td>
+                           <td><a href="/Delete?userId=<%= u.getId() %>">Delete</a></td>
+                         </tr>        
+                     <% } %>
+                </tbody>
+            </table>              
         </div>     
     </div>
       

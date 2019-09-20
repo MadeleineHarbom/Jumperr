@@ -33,7 +33,7 @@ public class Frontpage extends HttpServlet {
             // initialiserer nogle user-objekter
             init_users();
 
-            request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/jsp/notLoggedIn/login.jsp").forward(request, response);
 
         } else {
 
@@ -43,7 +43,7 @@ public class Frontpage extends HttpServlet {
                 request.setAttribute("users", Storage.getUsers());
                 request.setAttribute("username", user.getUsername());
 
-                request.getRequestDispatcher("/WEB-INF/jsp/users_adminPage.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/jsp/admin/users_adminPage.jsp").forward(request, response);
 
             } else {
 
@@ -72,7 +72,7 @@ public class Frontpage extends HttpServlet {
             error = "The username & password combination are incorrect...";
             request.setAttribute("error", error);
 
-            request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/jsp/notLoggedIn/login.jsp").forward(request, response);
         }
 
     }

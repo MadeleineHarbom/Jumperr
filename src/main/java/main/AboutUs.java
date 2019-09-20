@@ -7,20 +7,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/Logout")
-public class Logout extends HttpServlet {
-
+@WebServlet("/AboutUs")
+public class AboutUs extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        if (request.getSession().getAttribute("user") != null) {
-            request.getSession().setAttribute("user", null);
-        }
+        request.getRequestDispatcher("/WEB-INF/jsp/notLoggedIn/aboutUs.jsp").forward(request, response);
+    }
 
-        response.sendRedirect("/");
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
     }
 
 }

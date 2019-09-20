@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.User;
+
 @WebServlet("/ProfileSettings")
 public class ProfileSettings extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -15,7 +17,24 @@ public class ProfileSettings extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        request.getRequestDispatcher("/WEB-INF/jsp/settings.jsp").forward(request, response);
+        User user = (User) request.getSession().getAttribute("user");
+
+        if (user == null) {
+
+            response.sendRedirect("/");
+
+        } else {
+
+            // hvis det er Admin
+            if (user.getAdmin() == 1) {
+
+                request.getRequestDispatcher("/WEB-INF/jsp/admin/settings_adminPage.jsp").forward(request, response);
+
+            } else {
+
+                request.getRequestDispatcher("/WEB-INF/jsp/loggedIn/settings.jsp").forward(request, response);
+            }
+        }
     }
 
     @Override

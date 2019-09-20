@@ -36,10 +36,10 @@
                         <a class="nav-link active" href="/">Home</a>
                     </li>
                     
-	                <!--  Register user -->
-	                <li class="nav-item">
-	                    <a class="nav-link" href="/CreateUser">Register</a>
-	                </li>                      
+                    <!--  Register user -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/CreateUser">Register</a>
+                    </li>                      
                     
                     <!--  About - den har en dropdown-menu -->
                     <li class="nav-item dropdown">
@@ -47,10 +47,10 @@
                             About
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">About us</a>
-                            <a class="dropdown-item" href="#">FAQ</a>
+                            <a class="dropdown-item" href="/AboutUs">About us</a>
+                            <a class="dropdown-item" href="/FAQ">FAQ</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Contact us</a>
+                            <a class="dropdown-item" href="/ContactUs">Contact us</a>
                         </div>
                     </li>
                     
@@ -70,44 +70,44 @@
             
             <hr class="my-5">                      
  
-            <!-- login-formular -->		   		  
-	        <main class="my-form">
-	            <div class="container col-md-8">
-	                <div class="row justify-content-center">
-	                    <div class="col-md-10">
+            <!-- login-formular -->               
+            <main class="my-form">
+                <div class="container col-md-8">
+                    <div class="row justify-content-center">
+                        <div class="col-md-10">
                             <!-- fejl meddelelse -->
                             <div id="error" class="alert alert-danger" role="alert">${error}</div>  
-	                            <div class="card">
-	                                <div class="card-header">Login</div>
-	                                <div class="card-body">
-	                                    <form name="my-form" action="/" method="post">
-	        
-	                                        <div class="form-group row">
-	                                            <label for="username" class="col-md-4 col-form-label text-md-right">Username</label>
-	                                            <div class="col-md-6">
-	                                                <input type="text" id="username" class="form-control" name="username" required="true">
-	                                            </div>
-	                                        </div>
-	        
-	                                        <div class="form-group row">
-	                                            <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
-	                                            <div class="col-md-6">
-	                                                <input type="text" id="password" class="form-control" name="password" required="true">
-	                                            </div>
-	                                        </div>                                   
-	        
+                                <div class="card">
+                                    <div class="card-header">Login</div>
+                                    <div class="card-body">
+                                        <form name="my-form" action="/" method="post">
+            
+                                            <div class="form-group row">
+                                                <label for="username" class="col-md-4 col-form-label text-md-right">Username</label>
+                                                <div class="col-md-6">
+                                                    <input type="text" id="username" class="form-control" name="username" required="true">
+                                                </div>
+                                            </div>
+            
+                                            <div class="form-group row">
+                                                <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                                                <div class="col-md-6">
+                                                    <input type="password" id="password" class="form-control" name="password" required="true">
+                                                </div>
+                                            </div>                                   
+            
                                             <div class="col-md-6 offset-md-4">
                                                 <button type="submit" class="btn btn-primary">
                                                 Login
                                                 </button>
-                                            </div>	                                        
+                                            </div>                                          
                                        </form>
-	                                </div> <!-- card-body -->
+                                    </div> <!-- card-body -->
                                 </div> <!-- card -->
                             </div> <!-- yderste column -->
-	                    </div> <!-- yderste row -->
-	                </div>	<!-- container i login formularen -->         
-	           </main> <!-- login formularen -->
+                        </div> <!-- yderste row -->
+                    </div>  <!-- container i login formularen -->         
+               </main> <!-- login formularen -->
            </div> <!-- jumbotron -->
      </div> <!-- yderste container -->
      

@@ -2,10 +2,11 @@ package model;
 
 import java.util.ArrayList;
 
-public class Trip {
-    private int id;
-    private static int counter = 0;
+import storage.Storage;
 
+public class Trip {
+
+    private int id;
     private String date;
     private String timeOfDeparture; // afgangstidspunkt
     private String timeOfArrival; // ankomsttidspunkt
@@ -15,31 +16,34 @@ public class Trip {
     private ArrayList<PickUpPoint> pickUpPoints = new ArrayList<>();
 
     public Trip(String date, String timeOfDeparture, String timeOfArrival, String departureAddress,
-            String arrivalAddress, User driver, ArrayList<PickUpPoint> pickUpPoints) {
-        this.date = date;
-        this.timeOfDeparture = timeOfDeparture;
-        this.timeOfArrival = timeOfArrival;
-        this.departureAddress = departureAddress;
-        this.arrivalAddress = arrivalAddress;
-        this.driver = driver;
-        this.pickUpPoints = pickUpPoints;
-        assignID();
-    }
-
-    public Trip(String date, String timeOfDeparture, String timeOfArrival, String departureAddress,
             String arrivalAddress, User driver) {
+        this.id = generateUniqueID();
         this.date = date;
         this.timeOfDeparture = timeOfDeparture;
         this.timeOfArrival = timeOfArrival;
         this.departureAddress = departureAddress;
         this.arrivalAddress = arrivalAddress;
         this.driver = driver;
-        assignID();
     }
 
-    private void assignID() {
-        this.id = Trip.counter;
-        Trip.counter++;
+    public int generateUniqueID() {
+        int id = 0;
+
+        if (Storage.getTrips().size() == 0) {
+            id = 1;
+        } else {
+            int lastTripIndex = Storage.getTrips().size() - 1;
+            id = Storage.getTrips().get(lastTripIndex).id + 1;
+        }
+        return id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getDate() {
@@ -96,10 +100,6 @@ public class Trip {
 
     public void setPickUpPoints(ArrayList<PickUpPoint> pickUpPoints) {
         this.pickUpPoints = pickUpPoints;
-    }
-
-    public int getID() {
-        return id;
     }
 
 }

@@ -37,7 +37,7 @@
                 
                 <!--  Driver - (skal tilbyde et lift) -->
                 <li class="nav-item">
-                    <a class="nav-link active" href="/DriverServlet">Driver</a>
+                    <a class="nav-link active" href="/Driver">Driver</a>
                 </li>                 
                 
                 <!--  About - den har en dropdown-menu -->
@@ -46,10 +46,10 @@
                         About
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">About us</a>
-                        <a class="dropdown-item" href="#">FAQ</a>
+                        <a class="dropdown-item" href="/AboutUs">About us</a>
+                        <a class="dropdown-item" href="/FAQ">FAQ</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Contact us</a>
+                        <a class="dropdown-item" href="/ContactUs">Contact us</a>
                     </div>
                 </li>
                 
@@ -59,7 +59,7 @@
                         Profile
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">My profile</a>
+                        <a class="dropdown-item" href="/MyProfile">My profile</a>
                         <a class="dropdown-item" href="/ProfileSettings">Settings</a>
                         
                         <div class="dropdown-divider"></div>
@@ -86,25 +86,26 @@
                                 <div class="card">
                                     <div class="card-header">Trip</div>
                                     <div class="card-body">
-                                        <form name="my-form" action="DriverServlet" method="post">
+                                        <form name="my-form" action="Driver" method="post">
+                                            
                                             <div class="form-group row">
                                                 <label for="full_name" class="col-md-4 col-form-label text-md-right">Date</label>
                                                 <div class="col-md-6">
-                                                    <input type="text" id="full_name" class="form-control" name="date" required="true">
+                                                    <input type="date" id="full_name" class="form-control" name="date" required="true">
                                                 </div>
                                             </div>
             
                                             <div class="form-group row">
                                                 <label for="email_address" class="col-md-4 col-form-label text-md-right">Time of departure</label>
                                                 <div class="col-md-6">
-                                                    <input type="text" id="email_address" class="form-control" name="timeOfDeparture" required="true">
+                                                    <input type="time" id="email_address" class="form-control" name="timeOfDeparture" required="true">
                                                 </div>
                                             </div>
             
                                             <div class="form-group row">
                                                 <label for="address" class="col-md-4 col-form-label text-md-right">Time of arrival</label>
                                                 <div class="col-md-6">
-                                                    <input type="text" id="address" class="form-control" name="timeOfArrival" required="true">
+                                                    <input type="time" id="address" class="form-control" name="timeOfArrival" required="true">
                                                 </div>
                                             </div>
             
