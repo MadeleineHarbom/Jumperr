@@ -9,20 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import controller.Controller;
 import model.*;
-import storage.Storage;
+import storage.LocalStorage;
 
 @WebServlet("/")
 public class Frontpage extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-
-    // users initialiseres
-    public void init_users() {
-        Storage.addUser(new Admin("Lars", "Lars@hotmail.com", "Banegaardsgade 4", 10203040, "Lars_P", "123456"));
-        Storage.addUser(new User("Rabeea", "Rabeea@hotmail.com", "Vibyvej 69", 10203040, "Rabeea_M", "privat"));
-        Storage.addUser(new User("Hans", "Hans@hotmail.com", "Haslevej 12", 10203040, "Hans_L", "123"));
-        Storage.addUser(new User("Jens", "Jens@hotmail.com", "Vestre ringgade 40", 10203040, "Jens_P", "pass"));
-    }
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -31,7 +23,7 @@ public class Frontpage extends HttpServlet {
 
         if (user == null) {
             // initialiserer nogle user-objekter
-            init_users();
+            Controller.downloadUsersFromGoogleStorage("User.txt");
 
             request.getRequestDispatcher("/WEB-INF/jsp/notLoggedIn/login.jsp").forward(request, response);
 
@@ -40,7 +32,7 @@ public class Frontpage extends HttpServlet {
             // hvis det er Admin
             if (user.getAdmin() == 1) {
 
-                request.setAttribute("users", Storage.getUsers());
+                request.setAttribute("users", LocalStorage.getUsers());
                 request.setAttribute("username", user.getUsername());
 
                 request.getRequestDispatcher("/WEB-INF/jsp/admin/users_adminPage.jsp").forward(request, response);

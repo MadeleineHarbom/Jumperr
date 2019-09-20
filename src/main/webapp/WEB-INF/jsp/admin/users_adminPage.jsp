@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="java.util.List,model.*,storage.Storage"%>
+    pageEncoding="ISO-8859-1" import="java.util.List,model.*,storage.LocalStorage"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -117,8 +117,12 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <% for(int i = 0; i < Storage.getUsers().size(); i++) { %>
-                         <% User u = Storage.getUsers().get(i); %>
+                  <%
+                      for(int i = 0; i < LocalStorage.getUsers().size(); i++) {
+                  %>
+                         <%
+                             User u = LocalStorage.getUsers().get(i);
+                         %>
                          <tr>
                            <td><%= u.getId()    %></td>
                            <td><%= u.getName()  %></td>

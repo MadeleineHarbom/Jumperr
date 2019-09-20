@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-import storage.Storage;
+import storage.LocalStorage;
 
 public class Trip {
 
@@ -29,11 +29,11 @@ public class Trip {
     public int generateUniqueID() {
         int id = 0;
 
-        if (Storage.getTrips().size() == 0) {
+        if (LocalStorage.getTrips().size() == 0) {
             id = 1;
         } else {
-            int lastTripIndex = Storage.getTrips().size() - 1;
-            id = Storage.getTrips().get(lastTripIndex).id + 1;
+            int lastTripIndex = LocalStorage.getTrips().size() - 1;
+            id = LocalStorage.getTrips().get(lastTripIndex).id + 1;
         }
         return id;
     }

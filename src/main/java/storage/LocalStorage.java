@@ -3,7 +3,7 @@ package storage;
 import java.util.ArrayList;
 import model.*;
 
-public class Storage {
+public class LocalStorage {
 
     public static ArrayList<User> users = new ArrayList<>();
     public static ArrayList<Trip> trips = new ArrayList<>();

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.List,model.*,storage.Storage"%>
+    pageEncoding="UTF-8" import="java.util.List,model.*,storage.LocalStorage"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -112,7 +112,9 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <% for(Trip t : Storage.getTrips()) { %>
+                  <%
+                      for(Trip t : LocalStorage.getTrips()) {
+                  %>
                         
                          <tr>
                            <td><%= t.getDate()    %></td>

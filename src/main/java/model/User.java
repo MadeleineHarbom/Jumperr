@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 
-import storage.Storage;
+import storage.LocalStorage;
 
 public class User implements Serializable {
 
@@ -31,11 +31,11 @@ public class User implements Serializable {
 
         // hvis det er første bruger, får brugeren ID = 1 ellers får brugeren den sidste
         // brugeres id +1
-        if (Storage.getUsers().size() == 0) {
+        if (LocalStorage.getUsers().size() == 0) {
             id = 1;
         } else {
-            int lastUserIndex = Storage.getUsers().size() - 1;
-            id = Storage.getUsers().get(lastUserIndex).id + 1;
+            int lastUserIndex = LocalStorage.getUsers().size() - 1;
+            id = LocalStorage.getUsers().get(lastUserIndex).id + 1;
         }
         return id;
     }

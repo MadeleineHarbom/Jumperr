@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import controller.Controller;
 import model.User;
-import storage.Storage;
+import storage.LocalStorage;
 
 @WebServlet("/Delete")
 public class Delete extends HttpServlet {
@@ -28,7 +28,7 @@ public class Delete extends HttpServlet {
             if (userId != null) {
 
                 User user2 = Controller.getUserById(userId);
-                Storage.removeUser(user2);
+                LocalStorage.removeUser(user2);
             }
         }
         response.sendRedirect("/");
