@@ -18,7 +18,7 @@ public class Frontpage extends HttpServlet {
 
     // users initialiseres
     public void init_users() {
-        Storage.addUser(new Admin("Lars", "Lars@hotmail.com", "Banegårdsgade 4", 10203040, "Lars_P", "123456"));
+        Storage.addUser(new Admin("Lars", "Lars@hotmail.com", "Banegaardsgade 4", 10203040, "Lars_P", "123456"));
         Storage.addUser(new User("Rabeea", "Rabeea@hotmail.com", "Vibyvej 69", 10203040, "Rabeea_M", "privat"));
         Storage.addUser(new User("Hans", "Hans@hotmail.com", "Haslevej 12", 10203040, "Hans_L", "123"));
         Storage.addUser(new User("Jens", "Jens@hotmail.com", "Vestre ringgade 40", 10203040, "Jens_P", "pass"));
