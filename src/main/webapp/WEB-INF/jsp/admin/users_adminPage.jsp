@@ -117,12 +117,10 @@
                   </tr>
                 </thead>
                 <tbody>
+                
                   <%
-                      for(int i = 0; i < LocalStorage.getUsers().size(); i++) {
+                      for(User u : LocalStorage.getUsers()) {
                   %>
-                         <%
-                             User u = LocalStorage.getUsers().get(i);
-                         %>
                          <tr>
                            <td><%= u.getId()    %></td>
                            <td><%= u.getName()  %></td>

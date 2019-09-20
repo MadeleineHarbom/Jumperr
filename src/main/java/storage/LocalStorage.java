@@ -37,7 +37,9 @@ public class LocalStorage {
     }
 
     public static void removeTrip(Trip trip) {
-        trips.remove(trip);
+        if (trips.contains(trip)) {
+            trips.remove(trip);
+        }
     }
 
 }

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="model.*,storage.LocalStorage" %>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,7 +12,7 @@
   <!-- our CSS -->
   <link rel="stylesheet" type="text/css" href="../css/ourStyles.css"> 
   
-  <title>Update user</title>
+  <title>Update trip</title>
 </head>
 <body>
 
@@ -37,7 +37,7 @@
                 
                 <!--  Trips -->
                 <li class="nav-item">
-                    <a class="nav-link" href="Trips">Trips</a>
+                    <a class="nav-link" href="/Trips">Trips</a>
                 </li>                   
                 
                 <!--  Register user -->
@@ -53,7 +53,7 @@
                 <!--  Driver - (skal tilbyde et lift) -->
                 <li class="nav-item">
                     <a class="nav-link" href="/Driver">Driver</a>
-                </li>                 
+                </li>                                 
                 
                 <!--  About - den har en dropdown-menu -->
                 <li class="nav-item dropdown">
@@ -91,7 +91,7 @@
         <!-- Jumbotron - det er en form for header eller en udvidet header (hero-section) -->
         <div class="jumbotron">               
  
-            <!-- login-formular -->               
+            <!-- trip-formular -->               
             <main class="my-form">
                 <div class="container col-md-8">
                     <div class="row justify-content-center">
@@ -101,79 +101,67 @@
                                 <div class="card">
                                     <div class="card-header">Update</div>
                                     <div class="card-body">
-                                        <form name="my-form" action="Update" method="post">
+                                        <form name="my-form" action="Trips" method="post">
+                                        
                                             <div class="form-group row">
-                                                <label for="full_name" class="col-md-4 col-form-label text-md-right">Full Name</label>
+                                                <label for="full_name" class="col-md-4 col-form-label text-md-right">Date</label>
                                                 <div class="col-md-6">
-                                                    <input type="text" id="full_name" class="form-control" name="name" value="${name}" required="true">
+                                                    <input type="text" id="full_name" class="form-control" name="date" value="${date}" required="true">
                                                 </div>
                                             </div>
             
                                             <div class="form-group row">
-                                                <label for="email_address" class="col-md-4 col-form-label text-md-right">E-mail Address</label>
+                                                <label for="email_address" class="col-md-4 col-form-label text-md-right">Time of departure</label>
                                                 <div class="col-md-6">
-                                                    <input type="email" id="email_address" class="form-control" name="email" value="${email}" required="true">
+                                                    <input type="text" id="email_address" class="form-control" name="timeOfDeparture" value="${timeOfDeparture}" required="true">
                                                 </div>
                                             </div>
             
                                             <div class="form-group row">
-                                                <label for="address" class="col-md-4 col-form-label text-md-right">Address</label>
+                                                <label for="address" class="col-md-4 col-form-label text-md-right">Time of arrival</label>
                                                 <div class="col-md-6">
-                                                    <input type="text" id="address" class="form-control" name="address" value="${address}" required="true">
+                                                    <input type="text" id="address" class="form-control" name="timeOfArrival" value="${timeOfArrival}" required="true">
                                                 </div>
                                             </div>
             
                                             <div class="form-group row">
-                                                <label for="phoneNumber" class="col-md-4 col-form-label text-md-right">Phone Number</label>
+                                                <label for="phoneNumber" class="col-md-4 col-form-label text-md-right">Departure address</label>
                                                 <div class="col-md-6">
-                                                    <input type="tel" id="phoneNumber" class="form-control" name="telephoneNumber" value="${telephoneNumber}" required="true">
+                                                    <input type="text" id="phoneNumber" class="form-control" name="departureAddress" value="${departureAddress}" required="true">
                                                 </div>
                                             </div>
             
                                             <div class="form-group row">
-                                                <label for="username" class="col-md-4 col-form-label text-md-right">Username</label>
+                                                <label for="username" class="col-md-4 col-form-label text-md-right">Arrival address</label>
                                                 <div class="col-md-6">
-                                                    <input type="text" id="username" class="form-control" name="username" value="${username}" required="true">
+                                                    <input type="text" id="username" class="form-control" name="arrivalAddress" value="${arrivalAddress}" required="true">
                                                 </div>
-                                            </div>
-            
-                                            <div class="form-group row">
-                                                <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
-                                                <div class="col-md-6">
-                                                    <input type="text" id="password" class="form-control" name="password" value="${password}" required="true">
-                                                </div>
-                                            </div>
-                                                  
-                                            <!-- skjult felt der indeholder user-id -->
-                                            <input type="hidden" value="${userId}" name="userId">                                     
+                                            </div>        
+                                                                                                                                         
+                                            <!-- skjult felt der indeholder trip-id -->
+                                            <input type="hidden" value="${tripId}" name="tripId">    
             
                                             <div class="col-md-6 offset-md-4">
                                                 <button type="submit" class="btn btn-primary">
-                                                Update user
+                                                    Update trip
                                                 </button>
                                             </div>
                                       </form>
-                                   </div> <!-- card-body -->
+                                    </div> <!-- card-body -->
                                 </div> <!-- card -->
                             </div> <!-- yderste column -->
                         </div> <!-- yderste row -->
                     </div>  <!-- container i login formularen -->         
                </main> <!-- login formularen -->
            </div> <!-- jumbotron -->
-    </div> <!-- yderste container -->   
-    
-     <!-- hvis der er en fejlmeddelelse vises den med bootstrap ellers er den skjult -->
-     <script> 
-     if(document.querySelector("#error").innerHTML.trim() != ""){
-         document.querySelector("#error").style.display = "block";
-     } 
-     </script>    
-    
+</div> <!-- yderste div container -->
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
+
 
 </body>
 </html>

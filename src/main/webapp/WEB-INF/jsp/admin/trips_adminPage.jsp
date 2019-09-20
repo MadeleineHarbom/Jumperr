@@ -98,7 +98,7 @@
             <br/>
             <br/>
             
-            <!-- tabel med brugere i systemet -->
+            <!-- tabel med trips i systemet -->
             <table class="table table-striped table-responsive">
                 <thead>
                   <tr>
@@ -108,6 +108,8 @@
                         <th>From</th>
                         <th>To</th>
                         <th>Driver</th>
+                        <th>Edit</th>
+                        <th>Delete</th>                        
                              
                   </tr>
                 </thead>
@@ -124,8 +126,8 @@
                            <td><%= t.getArrivalAddress()   %></td>
                            <td><%= t.getDriver().getName()   %></td>
                            
-                           <td><a href="/Update?userId=<%= t.getId() %>">Edit</a></td>
-                           <td><a href="/Delete?userId=<%= t.getId() %>">Delete</a></td>
+                           <td><a href="/Update?tripId=<%= t.getId() %>">Edit</a></td>
+                           <td><a href="/Delete?tripId=<%= t.getId() %>">Delete</a></td>
                          </tr>        
                      <% } %>
                 </tbody>

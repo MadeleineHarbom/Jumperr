@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import controller.Controller;
+import model.Trip;
 import model.User;
 
 @WebServlet("/Update")
@@ -19,6 +20,7 @@ public class Update extends HttpServlet {
             throws ServletException, IOException {
 
         String userId = request.getParameter("userId");
+        String tripId = request.getParameter("tripId");
         User user1 = (User) request.getSession().getAttribute("user");
 
         if (user1 != null && user1.getAdmin() == 1) {
@@ -37,6 +39,18 @@ public class Update extends HttpServlet {
 
                 request.getRequestDispatcher("/WEB-INF/jsp/admin/updateUser_adminPage.jsp").forward(request, response);
 
+            } else if (tripId != null) {
+
+                Trip trip = Controller.getTripById(tripId);
+
+                request.setAttribute("tripId", tripId);
+                request.setAttribute("date", trip.getDate());
+                request.setAttribute("timeOfDeparture", trip.getTimeOfDeparture());
+                request.setAttribute("timeOfArrival", trip.getTimeOfArrival());
+                request.setAttribute("departureAddress", trip.getDepartureAddress());
+                request.setAttribute("arrivalAddress", trip.getArrivalAddress());
+
+                request.getRequestDispatcher("/WEB-INF/jsp/admin/updateTrip_adminPage.jsp").forward(request, response);
             }
         } else {
             response.sendRedirect("/");

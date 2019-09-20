@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.Controller;
-import model.User;
+import model.*;
 import storage.LocalStorage;
 
 @WebServlet("/Delete")
@@ -21,6 +21,7 @@ public class Delete extends HttpServlet {
             throws ServletException, IOException {
 
         String userId = request.getParameter("userId");
+        String tripId = request.getParameter("tripId");
         User user1 = (User) request.getSession().getAttribute("user");
 
         if (user1 != null && user1.getAdmin() == 1) {
@@ -29,6 +30,15 @@ public class Delete extends HttpServlet {
 
                 User user2 = Controller.getUserById(userId);
                 LocalStorage.removeUser(user2);
+
+                response.sendRedirect("/");
+                return;
+
+            } else if (tripId != null) {
+                Trip trip = Controller.getTripById(tripId);
+                LocalStorage.removeTrip(trip);
+                response.sendRedirect("/Trips");
+                return;
             }
         }
         response.sendRedirect("/");

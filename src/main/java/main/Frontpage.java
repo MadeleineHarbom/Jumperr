@@ -22,8 +22,14 @@ public class Frontpage extends HttpServlet {
         User user = (User) request.getSession().getAttribute("user");
 
         if (user == null) {
+
             // initialiserer nogle user-objekter
             Controller.downloadUsersFromGoogleStorage("User.txt");
+
+            // initialiserer nogle trip-objekter
+            if (LocalStorage.getTrips().size() == 0) {
+                Controller.downloadTripsFromGoogleStorage("Trip.txt");
+            }
 
             request.getRequestDispatcher("/WEB-INF/jsp/notLoggedIn/login.jsp").forward(request, response);
 
