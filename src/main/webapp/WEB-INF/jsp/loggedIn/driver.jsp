@@ -9,8 +9,14 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+  <!-- Bootstrap glyphicons (icons) -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
   <!-- our CSS -->
   <link rel="stylesheet" type="text/css" href="../css/ourStyles.css"> 
+  
+  <!-- our JavaScript -->
+  <script src="../js/ourScripts.js" defer></script>  
   
   <title>Driver</title>
 </head>
@@ -56,7 +62,7 @@
                 <!--  Profile -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" data-toggle="dropdown">                            
-                        Profile
+                        <span class="fa fa-user"></span> Profile
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="/MyProfile">My profile</a>
@@ -91,21 +97,21 @@
                                             <div class="form-group row">
                                                 <label for="full_name" class="col-md-4 col-form-label text-md-right">Date</label>
                                                 <div class="col-md-6">
-                                                    <input type="date" id="full_name" class="form-control" name="date" required="true">
+                                                    <input type="date" id="datefield" class="form-control" name="date" required="true">
                                                 </div>
                                             </div>
             
                                             <div class="form-group row">
                                                 <label for="email_address" class="col-md-4 col-form-label text-md-right">Time of departure</label>
                                                 <div class="col-md-6">
-                                                    <input type="time" id="email_address" class="form-control" name="timeOfDeparture" required="true">
+                                                    <input type="time" id="timefield1" class="form-control" name="timeOfDeparture" required="true">
                                                 </div>
                                             </div>
             
                                             <div class="form-group row">
                                                 <label for="address" class="col-md-4 col-form-label text-md-right">Time of arrival</label>
                                                 <div class="col-md-6">
-                                                    <input type="time" id="address" class="form-control" name="timeOfArrival" required="true">
+                                                    <input type="time" id="timefield2" class="form-control" name="timeOfArrival" required="true">
                                                 </div>
                                             </div>
             

@@ -9,8 +9,14 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+  <!-- Bootstrap glyphicons (icons) -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
   <!-- our CSS -->
   <link rel="stylesheet" type="text/css" href="../css/ourStyles.css"> 
+  
+  <!-- our JavaScript -->
+  <script src="../js/ourScripts.js" defer></script>  
   
   <title>Update user</title>
 </head>
@@ -71,7 +77,7 @@
                 <!--  Profile -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" data-toggle="dropdown">                            
-                        Profile
+                        <span class="fa fa-user"></span> Profile
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="/MyProfile">My profile</a>
@@ -160,14 +166,7 @@
                     </div>  <!-- container i login formularen -->         
                </main> <!-- login formularen -->
            </div> <!-- jumbotron -->
-    </div> <!-- yderste container -->   
-    
-     <!-- hvis der er en fejlmeddelelse vises den med bootstrap ellers er den skjult -->
-     <script> 
-     if(document.querySelector("#error").innerHTML.trim() != ""){
-         document.querySelector("#error").style.display = "block";
-     } 
-     </script>    
+    </div> <!-- yderste container -->       
     
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

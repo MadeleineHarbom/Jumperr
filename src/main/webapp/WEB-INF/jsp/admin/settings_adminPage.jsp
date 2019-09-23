@@ -9,8 +9,14 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+  <!-- Bootstrap glyphicons (icons) -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
   <!-- our CSS -->
   <link rel="stylesheet" type="text/css" href="../css/ourStyles.css"> 
+  
+  <!-- our JavaScript -->
+  <script src="../js/ourScripts.js" defer></script>  
     
   <title>Settings</title>
 </head>
@@ -71,7 +77,7 @@
                 <!--  Profile -->
                 <li class="nav-item dropdown">
                     <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown2" data-toggle="dropdown">                            
-                        Profile
+                        <span class="fa fa-user"></span> Profile
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="/MyProfile">My profile</a>
@@ -86,7 +92,44 @@
                                   
             </ul>
         </div>
-    </nav>      
+    </nav>    
+    
+	<!-- Nav tabs -->
+	<ul class="nav nav-tabs mt-5">
+	
+	  <li class="nav-item">
+	    <a class="nav-link active" data-toggle="tab" href="#menu1">Driver section</a>
+	  </li>
+	  
+	  <li class="nav-item">
+	    <a class="nav-link" data-toggle="tab" href="#menu2">Jumper section</a>
+	  </li>
+	  
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#menu3">Subscription</a>
+      </li>
+      
+	</ul>
+	
+	<!-- Tab panes -->
+	<div class="tab-content">
+	
+	  <div id="menu1" class="container tab-pane active"><br>
+	    <h3>Trips I have offered</h3>
+	    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+	  </div>
+	  
+	  <div id="menu2" class="container tab-pane fade"><br>
+	    <h3>Trips I have joined</h3>
+	    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+	  </div>
+	  
+	  <div id="menu3" class="container tab-pane fade"><br>
+	    <h3>Subscription</h3>
+	    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+	  </div>
+	  
+	</div>
 
 </div>
 

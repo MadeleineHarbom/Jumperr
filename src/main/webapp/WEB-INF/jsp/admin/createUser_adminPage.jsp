@@ -9,8 +9,14 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+  <!-- Bootstrap glyphicons (icons) -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
   <!-- our CSS -->
   <link rel="stylesheet" type="text/css" href="../css/ourStyles.css"> 
+  
+  <!-- our JavaScript -->
+  <script src="../js/ourScripts.js" defer></script>  
   
   <title>Registration</title>
 </head>
@@ -71,7 +77,7 @@
                 <!--  Profile -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" data-toggle="dropdown">                            
-                        Profile
+                        <span class="fa fa-user"></span> Profile
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="/MyProfile">My profile</a>
@@ -91,7 +97,7 @@
         <!-- Jumbotron - det er en form for header eller en udvidet header (hero-section) -->
         <div class="jumbotron">               
  
-            <!-- login-formular -->               
+            <!-- formular til oprettelse -->               
             <main class="my-form">
                 <div class="container col-md-8">
                     <div class="row justify-content-center">
@@ -127,7 +133,7 @@
                                             <div class="form-group row">
                                                 <label for="phoneNumber" class="col-md-4 col-form-label text-md-right">Phone Number</label>
                                                 <div class="col-md-6">
-                                                    <input type="tel" id="phoneNumber" class="form-control" name="telephoneNumber" required="true">
+                                                    <input type="tel" id="phone" class="form-control" name="telephoneNumber" required="true">
                                                 </div>
                                             </div>
             
@@ -156,16 +162,9 @@
                             </div> <!-- yderste column -->
                         </div> <!-- yderste row -->
                     </div>  <!-- container i login formularen -->         
-               </main> <!-- login formularen -->
+               </main> <!-- formularen til oprettelse -->
            </div> <!-- jumbotron -->
-     </div> <!-- yderste container -->
-    
-     <!-- hvis der er en fejlmeddelelse vises den med bootstrap ellers er den skjult -->
-     <script> 
-     if(document.querySelector("#error").innerHTML.trim() != ""){
-         document.querySelector("#error").style.display = "block";
-     } 
-     </script>    
+     </div> <!-- yderste container --> 
     
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

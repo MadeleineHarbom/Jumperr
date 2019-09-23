@@ -63,17 +63,39 @@ public class Update extends HttpServlet {
             throws ServletException, IOException {
 
         String userId = request.getParameter("userId");
-        String name = request.getParameter("name");
-        String email = request.getParameter("email");
-        String address = request.getParameter("address");
-        int telephoneNumber = Integer.parseInt(request.getParameter("telephoneNumber"));
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        String tripId = request.getParameter("tripId");
 
-        Controller.updateUser(userId, email, name, address, telephoneNumber, username, password);
+        if (userId != null) {
+            String name = request.getParameter("name");
+            String email = request.getParameter("email");
+            String address = request.getParameter("address");
+            int telephoneNumber = Integer.parseInt(request.getParameter("telephoneNumber"));
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
 
-        Controller.updateUsersInGoogleStorage(LocalStorage.getUsers(), "User.txt");
+            Controller.updateUser(userId, email, name, address, telephoneNumber, username, password);
 
-        response.sendRedirect("/");
+            Controller.updateUsersInGoogleStorage(LocalStorage.getUsers(), "User.txt");
+
+            response.sendRedirect("/");
+
+        } else if (tripId != null) {
+
+            User user = (User) request.getSession().getAttribute("user");
+            String date = request.getParameter("date");
+            String timeOfDeparture = request.getParameter("timeOfDeparture");
+            String timeOfArrival = request.getParameter("timeOfArrival");
+            String departureAddress = request.getParameter("departureAddress");
+            String arrivalAddress = request.getParameter("arrivalAddress");
+
+            Controller.updateTrip(tripId, date, timeOfDeparture, timeOfArrival, departureAddress, arrivalAddress, user);
+
+            Controller.updateTripsInGoogleStorage(LocalStorage.getTrips(), "Trip.txt");
+
+            response.sendRedirect("/Trips");
+
+        } else {
+            response.sendRedirect("/");
+        }
     }
 }

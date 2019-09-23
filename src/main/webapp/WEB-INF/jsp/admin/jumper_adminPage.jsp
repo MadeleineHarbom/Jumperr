@@ -9,8 +9,14 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+  <!-- Bootstrap glyphicons (icons) -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
   <!-- our CSS -->
   <link rel="stylesheet" type="text/css" href="../css/ourStyles.css"> 
+  
+  <!-- our JavaScript -->
+  <script src="../js/ourScripts.js" defer></script>  
     
   <title>Jumper</title>
 </head>
@@ -71,7 +77,7 @@
                 <!--  Profile -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" data-toggle="dropdown">                            
-                        Profile
+                        <span class="fa fa-user"></span> Profile
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="/MyProfile">My profile</a>
@@ -86,7 +92,19 @@
                                   
             </ul>
         </div>
-    </nav>      
+    </nav>     
+    
+    <!-- Jumbotron - det er en form for header eller en udvidet header (hero-section) -->
+    <div class="jumbotron">  
+    
+        <div class="alert alert-warning mb-5">
+            <h4 class="alert-heading">Info!</h4>
+            <p>Please be aware that a Driver has the option to accept and reject a passenger. If you have any questions, please feel free to contact us.</p>
+            <hr/>
+            <p>You will receive an email when the driver accepts your trip.</p>
+        </div>  
+        
+    </div>
 
 </div>
 

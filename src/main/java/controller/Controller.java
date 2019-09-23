@@ -4,14 +4,10 @@ import model.*;
 import storage.*;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
-import javax.servlet.http.Part;
-
 import java.nio.channels.Channels;
 import java.nio.channels.WritableByteChannel;
 
@@ -19,19 +15,13 @@ import java.nio.channels.WritableByteChannel;
 //various imports
 //////////////////////////////////////////////////
 //// import com.google.auth.Credentials;
-import com.google.api.gax.paging.Page;
 import com.google.cloud.ReadChannel;
-import com.google.cloud.WriteChannel;
 import com.google.cloud.storage.Blob;
 import com.google.cloud.storage.BlobId;
-import com.google.cloud.storage.BlobInfo;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.storage.Bucket;
-//import com.google.cloud.storage.BucketInfo;
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.StorageOptions;
-import com.google.protobuf.compiler.PluginProtos.CodeGeneratorResponse.File;
-//////////////////////////////////////////////////
 
 public class Controller {
 

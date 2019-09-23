@@ -9,8 +9,14 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+  <!-- Bootstrap glyphicons (icons) -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
   <!-- our CSS -->
   <link rel="stylesheet" type="text/css" href="../css/ourStyles.css"> 
+  
+  <!-- our JavaScript -->
+  <script src="../js/ourScripts.js" defer></script>  
   
   <title>Update trip</title>
 </head>
@@ -71,7 +77,7 @@
                 <!--  Profile -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" data-toggle="dropdown">                            
-                        Profile
+                        <span class="fa fa-user"></span> Profile
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="/MyProfile">My profile</a>
@@ -101,7 +107,7 @@
                                 <div class="card">
                                     <div class="card-header">Update</div>
                                     <div class="card-body">
-                                        <form name="my-form" action="Trips" method="post">
+                                        <form name="my-form" action="Update" method="post">
                                         
                                             <div class="form-group row">
                                                 <label for="full_name" class="col-md-4 col-form-label text-md-right">Date</label>
@@ -154,7 +160,7 @@
                     </div>  <!-- container i login formularen -->         
                </main> <!-- login formularen -->
            </div> <!-- jumbotron -->
-</div> <!-- yderste div container -->
+    </div> <!-- yderste div container -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -6,8 +6,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import controller.Controller;
 import model.User;
 import storage.LocalStorage;
 
@@ -31,26 +29,6 @@ public class Trips extends HttpServlet {
         } else {
             response.sendRedirect("/");
         }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        User user = (User) request.getSession().getAttribute("user");
-        String tripId = request.getParameter("tripId");
-        String date = request.getParameter("date");
-        String timeOfDeparture = request.getParameter("timeOfDeparture");
-        String timeOfArrival = request.getParameter("timeOfArrival");
-        String departureAddress = request.getParameter("departureAddress");
-        String arrivalAddress = request.getParameter("arrivalAddress");
-
-        Controller.updateTrip(tripId, date, timeOfDeparture, timeOfArrival, departureAddress, arrivalAddress, user);
-
-        Controller.updateTripsInGoogleStorage(LocalStorage.getTrips(), "Trip.txt");
-
-        response.sendRedirect("/Trips");
-
     }
 
 }
