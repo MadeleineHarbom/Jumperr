@@ -115,6 +115,13 @@ public class Controller {
         Controller.updateTripsInGoogleStorage(LocalStorage.getTrips(), "Trip.txt");
     }
 
+    public static void createPickUpPoint(User jumper, int tripId, String departureAddress, String arrivalAddress,
+            String price, double km) {
+
+        PickUpPoint pickUpPoint = new PickUpPoint(jumper, tripId, departureAddress, arrivalAddress, price, km);
+        LocalStorage.addPickUpPoint(pickUpPoint);
+    }
+
     // opretter forbindelse til Google Storage Bucket samt returnerer et
     // bucket-objekt
     public static Bucket getGoogleStorageBucket() throws IOException {
@@ -226,17 +233,31 @@ public class Controller {
         for (String line : lines) {
 
             String[] TripInfo = line.split(", ");
+
             String date = TripInfo[1];
             String timeOfDeparture = TripInfo[2];
             String timeOfArrival = TripInfo[3];
             String departureAddress = TripInfo[4];
             String arrivalAddress = TripInfo[5];
-            String availableSeats = TripInfo[6];
             User user = LocalStorage.getUsers().get(0);
+            String availableSeats = TripInfo[6];
 
             Trip trip = new Trip(date, timeOfDeparture, timeOfArrival, departureAddress, arrivalAddress, user,
                     Integer.parseInt(availableSeats));
             LocalStorage.addTrip(trip);
+
+            // String jumper = TripInfo[7];
+            if (TripInfo.length > 7) {
+                int tripId = Integer.parseInt(TripInfo[8]);
+                String departureAddress_pickUpPoint = TripInfo[9];
+                String arrivalAddress_pickUpPoint = TripInfo[10];
+                String price = TripInfo[11];
+                double km = Double.parseDouble(TripInfo[12]);
+
+                PickUpPoint pickUpPoint = new PickUpPoint(user, tripId, departureAddress_pickUpPoint,
+                        arrivalAddress_pickUpPoint, price, km);
+                trip.addPickUpPoint(pickUpPoint);
+            }
         }
     }
 

@@ -108,8 +108,12 @@ public class Trip {
         return pickUpPoints;
     }
 
-    public void setPickUpPoints(ArrayList<PickUpPoint> pickUpPoints) {
-        this.pickUpPoints = pickUpPoints;
+    public void addPickUpPoint(PickUpPoint pickUpPoint) {
+        this.pickUpPoints.add(pickUpPoint);
+    }
+
+    public void removePickUpPoint(PickUpPoint pickUpPoint) {
+        this.pickUpPoints.remove(pickUpPoint);
     }
 
 }

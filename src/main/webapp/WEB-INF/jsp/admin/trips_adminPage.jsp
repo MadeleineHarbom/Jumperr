@@ -22,7 +22,7 @@
 </head>
 <body>
 
-<div class="container">
+<div id="trips_admin" class="container">
 
     <!-- navigations-menu -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -221,6 +221,7 @@
                         <th>To</th>
                         <th>Driver</th>
                         <th>Available seats</th>
+                        <th>PickUpPoints</th> 
                         <th>Actions</th>                            
                   </tr>
                 </thead>
@@ -238,6 +239,18 @@
                            <td><%= t.getArrivalAddress()   %></td>
                            <td><%= t.getDriver().getName()   %></td>
                            <td><%= t.getAvailableSeats()  %></td>
+                           <td>
+                                <select class="custom-select custom-select-sm">
+                                    <option selected>PickUpPoints</option>
+	                            <% if(t.getPickUpPoints().size() != 0) { %>																  
+									    <option value="1">Jumper: <%= t.getPickUpPoints().get(0).getJumper().getName() %></option>
+									    <option value="2">Departure address: <%= t.getPickUpPoints().get(0).getDepartureAddress() %></option>
+									    <option value="3">Arrival address: <%= t.getPickUpPoints().get(0).getArrivalAddress() %></option>
+									    <option value="4">Price: <%= t.getPickUpPoints().get(0).getPrice() %></option>
+									    <option value="5">Km: <%= t.getPickUpPoints().get(0).getKm() %></option>								
+	                            <% } %>
+                                </select>
+                           </td>
                            <td class="actionsColumn">
                                <a href="/Update?tripId=<%= t.getId() %>" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-success">
                                    <span class="fa fa-edit"></span> 

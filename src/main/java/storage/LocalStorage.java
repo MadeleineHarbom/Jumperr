@@ -7,6 +7,7 @@ public class LocalStorage {
 
     public static ArrayList<User> users = new ArrayList<>();
     public static ArrayList<Trip> trips = new ArrayList<>();
+    public static ArrayList<PickUpPoint> pickUpPoints = new ArrayList<>();
 
     // users
     public static ArrayList<User> getUsers() {
@@ -39,6 +40,23 @@ public class LocalStorage {
     public static void removeTrip(Trip trip) {
         if (trips.contains(trip)) {
             trips.remove(trip);
+        }
+    }
+
+    // pickUpPoints
+    public static ArrayList<PickUpPoint> getPickUpPoints() {
+        return pickUpPoints;
+    }
+
+    public static void addPickUpPoint(PickUpPoint pickUpPoint) {
+        if (!pickUpPoints.contains(pickUpPoint)) {
+            pickUpPoints.add(pickUpPoint);
+        }
+    }
+
+    public static void removePickUpPoint(PickUpPoint pickUpPoint) {
+        if (pickUpPoints.contains(pickUpPoint)) {
+            pickUpPoints.remove(pickUpPoint);
         }
     }
 
