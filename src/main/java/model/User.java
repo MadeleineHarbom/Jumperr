@@ -1,6 +1,8 @@
 package model;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Iterator;
 
 import storage.LocalStorage;
 
@@ -14,6 +16,8 @@ public class User implements Serializable {
     private String username;
     private String password;
     private int admin;
+    private HashMap<User, Integer> jumpReviews  = new HashMap<>();
+    private HashMap<User, Integer> driveReviews  = new HashMap<>();
 
     public User(String name, String email, String address, int telephoneNumber, String username, String password) {
         this.id = generateUniqueID();
@@ -135,4 +139,37 @@ public class User implements Serializable {
         }
         return true;
     }
+    
+    public void addDriveReview(User u, int i) {
+    	this.driveReviews.put(u, i);
+
+    }
+    
+    public void addJumpReview(User u, int i) {
+ 
+    	
+    	this.jumpReviews.put(u, i);
+    }
+    
+    public double getDriveScore() {
+    	double d = 0;
+    	Iterator<HashMap.Entry<User, Integer>> itr = driveReviews.entrySet().iterator();
+    	while(itr.hasNext()) {
+    		d += itr.next().getValue();
+    	}
+    	return d;
+    }
+    
+    public double getJumpScore() {
+    	double d = 0.0;
+    	
+    	Iterator<HashMap.Entry<User, Integer>> itr = jumpReviews.entrySet().iterator();
+    	while(itr.hasNext()) {
+    		d += itr.next().getValue();
+    	}
+    	
+    	return d;
+    }
+    
+
 }
