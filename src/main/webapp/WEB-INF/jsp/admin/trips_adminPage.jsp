@@ -167,7 +167,14 @@
 		                                                <div class="col-md-6">
 		                                                    <input type="text" id="username" class="form-control" name="arrivalAddress" required="true">
 		                                                </div>
-		                                            </div>           
+		                                            </div>  
+		                                            
+		                                            <div class="form-group row">
+		                                                <label for="username" class="col-md-4 col-form-label text-md-right">Available seats</label>
+		                                                <div class="col-md-6">
+		                                                    <input type="text" id="availableSeats" class="form-control" name="availableSeats" required="true">
+		                                                </div>
+		                                            </div>		                                                     
 		            
                                                     <!-- Modal footer -->
                                                     <div class="modal-footer">                                                  
@@ -213,6 +220,7 @@
                         <th>From</th>
                         <th>To</th>
                         <th>Driver</th>
+                        <th>Available seats</th>
                         <th>Actions</th>                            
                   </tr>
                 </thead>
@@ -229,7 +237,8 @@
                            <td><%= t.getDepartureAddress()   %></td>
                            <td><%= t.getArrivalAddress()   %></td>
                            <td><%= t.getDriver().getName()   %></td>
-                           <td>
+                           <td><%= t.getAvailableSeats()  %></td>
+                           <td class="actionsColumn">
                                <a href="/Update?tripId=<%= t.getId() %>" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-success">
                                    <span class="fa fa-edit"></span> 
                                </a>

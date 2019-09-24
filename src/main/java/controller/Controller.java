@@ -90,7 +90,7 @@ public class Controller {
     }
 
     public static void updateTrip(String tripId, String date, String timeOfDeparture, String timeOfArrival,
-            String departureAddress, String arrivalAddress, User user) {
+            String departureAddress, String arrivalAddress, User user, int availableSeats) {
 
         for (Trip trip : LocalStorage.getTrips()) {
             if (trip.getId() == Integer.parseInt(tripId)) {
@@ -99,15 +99,17 @@ public class Controller {
                 trip.setArrivalAddress(arrivalAddress);
                 trip.setTimeOfDeparture(timeOfDeparture);
                 trip.setTimeOfArrival(timeOfArrival);
+                trip.setAvailableSeats(availableSeats);
                 break;
             }
         }
     }
 
     public static void createTrip(String date, String timeOfDeparture, String timeOfArrival, String departureAddress,
-            String arrivalAddress, User user) throws IOException {
+            String arrivalAddress, User user, int availableSeats) throws IOException {
 
-        Trip trip = new Trip(date, timeOfDeparture, timeOfArrival, departureAddress, arrivalAddress, user);
+        Trip trip = new Trip(date, timeOfDeparture, timeOfArrival, departureAddress, arrivalAddress, user,
+                availableSeats);
         LocalStorage.addTrip(trip);
 
         Controller.updateTripsInGoogleStorage(LocalStorage.getTrips(), "Trip.txt");
@@ -229,9 +231,11 @@ public class Controller {
             String timeOfArrival = TripInfo[3];
             String departureAddress = TripInfo[4];
             String arrivalAddress = TripInfo[5];
+            String availableSeats = TripInfo[6];
             User user = LocalStorage.getUsers().get(0);
 
-            Trip trip = new Trip(date, timeOfDeparture, timeOfArrival, departureAddress, arrivalAddress, user);
+            Trip trip = new Trip(date, timeOfDeparture, timeOfArrival, departureAddress, arrivalAddress, user,
+                    Integer.parseInt(availableSeats));
             LocalStorage.addTrip(trip);
         }
     }
@@ -251,7 +255,8 @@ public class Controller {
             newString = newString + t.getTimeOfDeparture() + ", ";
             newString = newString + t.getTimeOfArrival() + ", ";
             newString = newString + t.getDepartureAddress() + ", ";
-            newString = newString + t.getArrivalAddress();
+            newString = newString + t.getArrivalAddress() + ", ";
+            newString = newString + t.getAvailableSeats();
             newString = newString + "\n";
         }
 

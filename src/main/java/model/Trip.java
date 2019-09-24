@@ -13,10 +13,11 @@ public class Trip {
     private String departureAddress; // afgangsadresse
     private String arrivalAddress; // ankomstadresse
     private User driver;
+    private int availableSeats;
     private ArrayList<PickUpPoint> pickUpPoints = new ArrayList<>();
 
     public Trip(String date, String timeOfDeparture, String timeOfArrival, String departureAddress,
-            String arrivalAddress, User driver) {
+            String arrivalAddress, User driver, int availableSeats) {
         this.id = generateUniqueID();
         this.date = date;
         this.timeOfDeparture = timeOfDeparture;
@@ -24,6 +25,7 @@ public class Trip {
         this.departureAddress = departureAddress;
         this.arrivalAddress = arrivalAddress;
         this.driver = driver;
+        this.availableSeats = availableSeats;
     }
 
     public int generateUniqueID() {
@@ -92,6 +94,14 @@ public class Trip {
 
     public void setDriver(User driver) {
         this.driver = driver;
+    }
+
+    public int getAvailableSeats() {
+        return availableSeats;
+    }
+
+    public void setAvailableSeats(int availableSeats) {
+        this.availableSeats = availableSeats;
     }
 
     public ArrayList<PickUpPoint> getPickUpPoints() {

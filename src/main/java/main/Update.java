@@ -87,8 +87,10 @@ public class Update extends HttpServlet {
             String timeOfArrival = request.getParameter("timeOfArrival");
             String departureAddress = request.getParameter("departureAddress");
             String arrivalAddress = request.getParameter("arrivalAddress");
+            int availableSeats = Controller.getTripById(tripId).getAvailableSeats();
 
-            Controller.updateTrip(tripId, date, timeOfDeparture, timeOfArrival, departureAddress, arrivalAddress, user);
+            Controller.updateTrip(tripId, date, timeOfDeparture, timeOfArrival, departureAddress, arrivalAddress, user,
+                    availableSeats);
 
             Controller.updateTripsInGoogleStorage(LocalStorage.getTrips(), "Trip.txt");
 

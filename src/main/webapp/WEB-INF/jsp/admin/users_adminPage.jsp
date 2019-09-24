@@ -237,7 +237,7 @@
                            <td><%= u.getUsername() %></td>
                            <td><%= u.getPassword() %></td>  
                            <td><%= u.getAdmin() %></td>
-                           <td>
+                           <td class="actionsColumn">
 	                           <a href="/Update?userId=<%= u.getId() %>" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-success">
 	                               <span class="fa fa-edit"></span> 
 	                           </a>

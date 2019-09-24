@@ -43,7 +43,7 @@ public class Driver extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // driver-user
+        // driver-user eller admin (for at teste funktionaliteten)
         User user = (User) request.getSession().getAttribute("user");
 
         String date = request.getParameter("date");
@@ -51,10 +51,16 @@ public class Driver extends HttpServlet {
         String timeOfArrival = request.getParameter("timeOfArrival");
         String departureAddress = request.getParameter("departureAddress");
         String arrivalAddress = request.getParameter("arrivalAddress");
+        int availableSeats = Integer.parseInt(request.getParameter("availableSeats"));
 
-        Controller.createTrip(date, timeOfDeparture, timeOfArrival, departureAddress, arrivalAddress, user);
+        Controller.createTrip(date, timeOfDeparture, timeOfArrival, departureAddress, arrivalAddress, user,
+                availableSeats);
 
-        response.sendRedirect("/ProfileSettings");
+        if (user.getAdmin() == 1) {
+            response.sendRedirect("/Trips");
+        } else {
+            response.sendRedirect("/ProfileSettings");
+        }
 
     }
 
