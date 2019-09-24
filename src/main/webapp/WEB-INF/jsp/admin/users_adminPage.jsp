@@ -99,7 +99,7 @@
         <!-- Jumbotron - det er en form for header eller en udvidet header (hero-section) -->
         <div class="jumbotron">
 
-            <!-- add user - åbnet i et Modal -->
+            <!-- add user - åbner i et Modal -->
             <button class="btn btn-primary" data-toggle="modal" data-target="#createUser">
                 <span class="fa fa-plus"></span> Add user
             </button>
@@ -194,7 +194,7 @@
 		                        </div> <!-- yderste row -->
 		                    </div>  <!-- container i login formularen -->         
 		               </main> <!-- formularen til oprettelse -->			      
-			      </div>
+			      </div> <!-- modal body slutter her -->
 			      
 			    </div> <!-- modal indhold slutter her -->
 			    

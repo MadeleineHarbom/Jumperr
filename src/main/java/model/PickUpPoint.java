@@ -2,15 +2,26 @@ package model;
 
 public class PickUpPoint {
 
+    private User jumper;
     private String departureAddress; // afgangsadresse
     private String arrivalAddress; // ankomstadresse
     private String price;
     private double km;
 
-    public PickUpPoint(String departureAddress, String arrivalAddress, double km) {
+    public PickUpPoint(User jumper, String departureAddress, String arrivalAddress, String price, double km) {
+        this.jumper = jumper;
         this.departureAddress = departureAddress;
         this.arrivalAddress = arrivalAddress;
+        this.price = price;
         this.km = km;
+    }
+
+    public User getJumper() {
+        return jumper;
+    }
+
+    public void setJumper(User jumper) {
+        this.jumper = jumper;
     }
 
     public String getDepartureAddress() {

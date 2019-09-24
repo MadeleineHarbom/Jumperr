@@ -165,7 +165,7 @@
                             </div> <!-- yderste column -->
                         </div> <!-- yderste row -->
                     </div>  <!-- container i login formularen -->         
-               </main> <!-- login formularen -->
+               </main> <!-- trip formularen -->
            </div> <!-- jumbotron -->
     </div> <!-- yderste div container -->
 
