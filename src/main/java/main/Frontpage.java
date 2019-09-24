@@ -46,7 +46,7 @@ public class Frontpage extends HttpServlet {
             } else {
 
                 request.setAttribute("username", user.getUsername());
-                response.sendRedirect("/Jumper");
+                request.getRequestDispatcher("/WEB-INF/jsp/loggedIn/myRecentTrips.jsp").forward(request, response);
             }
         }
     }
