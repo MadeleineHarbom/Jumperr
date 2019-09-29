@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,6 +12,9 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
+	
+<!-- Bootstrap spinner vises i bootstrap version 4.2 -->	
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
 <!-- Bootstrap glyphicons (icons) -->
 <link
@@ -32,7 +35,7 @@
 
 		<!-- navigations-menu -->
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark"> <a
-			class="navbar-brand" href="#">Jumperr</a> <!-- ændrer udseendet på navigations-menuen på en mobil-device -->
+			class="navbar-brand" href="#">Jumperr</a> <!-- Ã¦ndrer udseendet pÃ¥ navigations-menuen pÃ¥ en mobil-device -->
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent">
 			<span class="navbar-toggler-icon"></span>
@@ -90,6 +93,8 @@
 			</ul>
 		</div>
 		</nav>
+		
+		<div id="spinner" class="spinner-border spinner-border-lg d-none"></div>
 
 		<!-- Jumbotron - det er en form for header eller en udvidet header (hero-section) -->
 		<div class="jumbotron">
@@ -120,8 +125,7 @@
 						<input type="text" class="form-control" placeholder="Post code">
 					</div>
 
-					<button class="btn btn-primary" data-toggle="modal"
-						data-target="#createTrip">Search</button>
+					<button class="btn btn-primary" onclick="searchForTrips_jumper()">Search</button>					
 				</div>
 			</form>
 			<br>
@@ -150,7 +154,7 @@
 
 		</div>
 		<!-- Jumbotron closes here -->
-		>
+		
 
 	</div>
 

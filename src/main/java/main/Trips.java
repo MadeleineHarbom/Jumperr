@@ -6,6 +6,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import controller.Controller;
 import model.User;
 import storage.LocalStorage;
 
@@ -29,6 +31,30 @@ public class Trips extends HttpServlet {
         } else {
             response.sendRedirect("/");
         }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        int tripId = Integer.parseInt(request.getParameter("tripId"));
+        if (Controller.getTripById(String.valueOf(tripId)).getAvailableSeats() != 0) {
+            User jumper = (User) request.getSession().getAttribute("user");
+            String departureAddress = request.getParameter("departureAddress");
+            String arrivalAddress = request.getParameter("arrivalAddress");
+            String price = request.getParameter("price");
+            double km = Double.parseDouble(request.getParameter("km"));
+
+            Controller.createPickUpPoint(jumper, tripId, departureAddress, arrivalAddress, price, km);
+            response.sendRedirect("/Trips");
+
+        } else {
+
+            String error = "There are no more seats available for this trip...";
+            request.setAttribute("error", error);
+            request.getRequestDispatcher("/WEB-INF/jsp/admin/trips_adminPage.jsp").forward(request, response);
+        }
+
     }
 
 }

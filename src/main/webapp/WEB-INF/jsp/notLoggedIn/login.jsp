@@ -81,8 +81,11 @@
                 <div class="container col-md-8">
                     <div class="row justify-content-center">
                         <div class="col-md-10">
-                            <!-- fejl meddelelse -->
-                            <div id="error" class="alert alert-danger" role="alert">${error}</div>  
+				            <!-- fejl meddelelse -->
+				            <div id="error" class="alert alert-danger alert-dismissible" role="alert">
+				               <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				               ${error}
+				            </div>  
                                 <div class="card">
                                     <div class="card-header">Login</div>
                                     <div class="card-body">

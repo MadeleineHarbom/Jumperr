@@ -69,7 +69,7 @@ function stripCharactersExceptNumbers() {
 function showError() {
 	
 	if(document.querySelector("#error") != null) {
-	    if(document.querySelector("#error").innerHTML.trim() != ""){
+	    if(document.querySelector("#error").innerHTML.trim().length > 71) {
 	        document.querySelector("#error").style.display = "block";
 	    } 
 	}
@@ -132,6 +132,79 @@ function searchForTrip() {
 	}
 }
 
+// kaldes når man klikker på en pick-up-point i modal-vinduet under trips
+function showPickUpPointInfo(pickUpPoint_ID, element) {
+	if(document.querySelector(".pickUpPoint_textarea") != null) {
+		let pickUpPoint_textarea = document.querySelector(".pickUpPoint_textarea");
+		if(pickUpPoint_textarea.classList.contains("d-none")) {
+			pickUpPoint_textarea.classList.remove("d-none");
+			if(pickUpPoint_textarea.innerHTML != "") {
+				pickUpPoint_textarea.innerHTML = "";				
+			}
+		}
+		
+		let pickUpPointInfo = document.querySelector("#pickUpPoint" + pickUpPoint_ID + "_info");
+		let pickUpPointTextareas = document.querySelectorAll(".pickUpPoint_textarea");		
+		
+		for (let i = 0; i < pickUpPointTextareas.length; i++) {
+			pickUpPointTextareas[i].innerHTML = pickUpPointInfo.innerHTML;
+		}
+		
+		let pickUpPointLinks = document.querySelectorAll('.showPickUpPointLinks');
+		for (let i = 0; i < pickUpPointLinks.length; i++) {
+			if(pickUpPointLinks[i].classList.contains("active")) {
+				pickUpPointLinks[i].classList.remove("active");
+			}
+		}
+		
+		element.classList.add("active");
+		
+		let removePickUpPoints = document.querySelectorAll("#removePickUpPoint");
+		for (let i = 0; i < removePickUpPoints.length; i++) {
+			removePickUpPoints[i].href = "/Delete?pickuppointId="+pickUpPoint_ID;
+		}
+		
+	}
+}
+
+// når man åbner Modal for at se pick-up-points for den enkelte trip fra Trips-tabellen 
+// skal der klikkes på den første pick-up-point hvis der er nogle pick-up-points (for at vise dens detaljer)
+function clickOnFirstPickUpPointWhenOpeningModalForTrip() {
+	if(document.querySelectorAll('*[id^="modalForTrip"]') != null) {
+		let pickUpPointModals = document.querySelectorAll('*[id^="modalForTrip"]');
+		
+		for (let i = 0; i < pickUpPointModals.length; i++) {
+			$(pickUpPointModals[i]).on('shown.bs.modal', function(e) {
+				let firstLink = "#" + e.target.id + ' a.showPickUpPointLinks:first';
+				$(firstLink).trigger('click');
+			})
+		}
+	}
+}
+
+// viser en spinner når man som Jumper søger efter trips - derefter vises resultaterne
+function searchForTrips_jumper() {
+	
+    // viser en div i 0,5 sekund derefter fader den ud
+    let spinner = document.querySelector("#spinner");
+
+    spinner.classList.remove("d-none");
+    spinner.style.opacity = 1;
+
+    setTimeout(function(){
+        let op = 1;  // initial opacity
+        let timer = setInterval(function () {
+            if (op <= 0.1){
+                clearInterval(timer);
+                spinner.style.display = 'none';
+            }
+            spinner.style.opacity = op;
+            spinner.style.filter = 'alpha(opacity=' + op * 100 + ")";
+            op -= op * 0.1;
+        }, 50);
+    }, 2000);  
+}
+
 setMinimumDate();
 setMinimumTime1();
 setMinimumTime2();
@@ -140,3 +213,4 @@ showError();
 enableTooltips();
 searchForUser();
 searchForTrip();
+clickOnFirstPickUpPointWhenOpeningModalForTrip();

@@ -110,10 +110,12 @@ public class Trip {
 
     public void addPickUpPoint(PickUpPoint pickUpPoint) {
         this.pickUpPoints.add(pickUpPoint);
+        this.availableSeats = this.availableSeats - 1;
     }
 
     public void removePickUpPoint(PickUpPoint pickUpPoint) {
         this.pickUpPoints.remove(pickUpPoint);
+        this.availableSeats = this.availableSeats + 1;
     }
 
 }

@@ -115,11 +115,25 @@ public class Controller {
         Controller.updateTripsInGoogleStorage(LocalStorage.getTrips(), "Trip.txt");
     }
 
+    public static PickUpPoint getPickUpPointById(String pickuppointId) {
+
+        PickUpPoint pickUpPointObject = null;
+
+        for (PickUpPoint pickUpPoint : LocalStorage.getPickUpPoints()) {
+            if (pickUpPoint.getId() == Integer.parseInt((pickuppointId))) {
+                pickUpPointObject = pickUpPoint;
+                break;
+            }
+        }
+        return pickUpPointObject;
+    }
+
     public static void createPickUpPoint(User jumper, int tripId, String departureAddress, String arrivalAddress,
             String price, double km) {
 
         PickUpPoint pickUpPoint = new PickUpPoint(jumper, tripId, departureAddress, arrivalAddress, price, km);
         LocalStorage.addPickUpPoint(pickUpPoint);
+        getTripById(Integer.toString(tripId)).addPickUpPoint(pickUpPoint);
     }
 
     // opretter forbindelse til Google Storage Bucket samt returnerer et
@@ -256,6 +270,7 @@ public class Controller {
 
                 PickUpPoint pickUpPoint = new PickUpPoint(user, tripId, departureAddress_pickUpPoint,
                         arrivalAddress_pickUpPoint, price, km);
+                LocalStorage.addPickUpPoint(pickUpPoint);
                 trip.addPickUpPoint(pickUpPoint);
             }
         }

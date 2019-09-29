@@ -1,7 +1,10 @@
 package model;
 
+import storage.LocalStorage;
+
 public class PickUpPoint {
 
+    private int id;
     private User jumper;
     private int tripId;
     private String departureAddress; // afgangsadresse
@@ -11,12 +14,33 @@ public class PickUpPoint {
 
     public PickUpPoint(User jumper, int tripId, String departureAddress, String arrivalAddress, String price,
             double km) {
+        this.id = generateUniqueID();
         this.jumper = jumper;
         this.tripId = tripId;
         this.departureAddress = departureAddress;
         this.arrivalAddress = arrivalAddress;
         this.price = price;
         this.km = km;
+    }
+
+    public int generateUniqueID() {
+        int id = 0;
+        int numberOfPickUpPointsInTrip = LocalStorage.getPickUpPoints().size();
+
+        if (numberOfPickUpPointsInTrip == 0) {
+            id = 1;
+        } else {
+            id = (numberOfPickUpPointsInTrip + 1);
+        }
+        return id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public User getJumper() {

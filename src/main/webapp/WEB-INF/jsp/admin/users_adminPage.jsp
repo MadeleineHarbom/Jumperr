@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="java.util.List,model.*,storage.LocalStorage"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.util.List,model.*,storage.LocalStorage"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -29,7 +29,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="#">Jumperr</a>
             
-            <!-- ændrer udseendet på navigations-menuen på en mobil-device -->
+            <!-- Ã¦ndrer udseendet pÃ¥ navigations-menuen pÃ¥ en mobil-device -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
                 <span class="navbar-toggler-icon"></span>
             </button>           
@@ -99,7 +99,7 @@
         <!-- Jumbotron - det er en form for header eller en udvidet header (hero-section) -->
         <div class="jumbotron">
 
-            <!-- add user - åbner i et Modal -->
+            <!-- add user - Ã¥bner i et Modal -->
             <button class="btn btn-primary" data-toggle="modal" data-target="#createUser">
                 <span class="fa fa-plus"></span> Add user
             </button>
@@ -237,13 +237,16 @@
                            <td><%= u.getUsername() %></td>
                            <td><%= u.getPassword() %></td>  
                            <td><%= u.getAdmin() %></td>
-                           <td class="actionsColumn">
-	                           <a href="/Update?userId=<%= u.getId() %>" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-success">
-	                               <span class="fa fa-edit"></span> 
-	                           </a>
-	                           <a href="/Delete?userId=<%= u.getId() %>" data-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-danger">
-	                               <span class="fa fa-trash"></span> 
-	                           </a>
+                           <td id="actions_td">
+
+		                               <a id="edit_link" href="/Update?userId=<%= u.getId() %>" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-success">
+		                                   <span class="fa fa-edit"></span> 
+		                               </a>		                           
+
+		                               <a href="/Delete?userId=<%= u.getId() %>" data-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-danger">
+		                                   <span class="fa fa-trash"></span> 
+		                               </a>		                           
+
                            </td>
                          </tr>        
                      <% } %>

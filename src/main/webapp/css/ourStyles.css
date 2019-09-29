@@ -20,6 +20,16 @@
 .left-addon input  { padding-left:  30px; }
 .right-addon input { padding-right: 30px; }
 
-.actionsColumn {
-	width:110px;
+#actions_td {
+	display:flex;
+}
+
+#edit_link {
+    margin-right:5px;
+}
+
+#spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
 }

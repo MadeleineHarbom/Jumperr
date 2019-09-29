@@ -22,6 +22,7 @@ public class Delete extends HttpServlet {
 
         String userId = request.getParameter("userId");
         String tripId = request.getParameter("tripId");
+        String pickuppointId = request.getParameter("pickuppointId");
         User user1 = (User) request.getSession().getAttribute("user");
 
         if (user1 != null && user1.getAdmin() == 1) {
@@ -41,6 +42,15 @@ public class Delete extends HttpServlet {
                 LocalStorage.removeTrip(trip);
 
                 Controller.updateTripsInGoogleStorage(LocalStorage.getTrips(), "Trip.txt");
+                response.sendRedirect("/Trips");
+                return;
+
+            } else if (pickuppointId != null) {
+                PickUpPoint pickuppoint = Controller.getPickUpPointById(pickuppointId);
+                int tripIdForPickUpPoint = pickuppoint.getTripId();
+                Controller.getTripById(tripIdForPickUpPoint + "").removePickUpPoint(pickuppoint);
+                LocalStorage.removePickUpPoint(pickuppoint);
+
                 response.sendRedirect("/Trips");
                 return;
             }

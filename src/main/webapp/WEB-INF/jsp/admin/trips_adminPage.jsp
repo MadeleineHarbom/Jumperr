@@ -92,7 +92,7 @@
                                   
             </ul>
         </div>
-    </nav>     
+    </nav>                
     
         <!-- Jumbotron - det er en form for header eller en udvidet header (hero-section) -->
         <div class="jumbotron">
@@ -124,8 +124,6 @@
 		                <div class="container col-md-10">
 		                    <div class="row justify-content-center">
 		                        <div class="col-md-12">
-		                            <!-- fejl meddelelse -->
-		                            <div id="error" class="alert alert-danger" role="alert">${error}</div>  
 		                                <div class="card">
 		                                    <div class="card-header">Trip</div>
 		                                    <div class="card-body">
@@ -207,7 +205,13 @@
               <input class="form-control mr-3 w-20" type="text" placeholder="Search by driver"
                 aria-label="Search" id="searchTrip">
               <span class="fa fa-search"></span>
-            </form>            
+            </form>   
+            
+	        <!-- fejl meddelelse -->
+	        <div id="error" class="alert alert-danger alert-dismissible" role="alert">
+	           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	           ${error}
+	        </div>                      
             
             <!-- tabel med trips i systemet -->
             <table id="tripsTable" class="table table-striped table-responsive">
@@ -239,20 +243,124 @@
                            <td><%= t.getArrivalAddress()   %></td>
                            <td><%= t.getDriver().getName()   %></td>
                            <td><%= t.getAvailableSeats()  %></td>
-                           <td>
-                                <select class="custom-select custom-select-sm">
-                                    <option selected>PickUpPoints</option>
-	                            <% if(t.getPickUpPoints().size() != 0) { %>																  
-									    <option value="1">Jumper: <%= t.getPickUpPoints().get(0).getJumper().getName() %></option>
-									    <option value="2">Departure address: <%= t.getPickUpPoints().get(0).getDepartureAddress() %></option>
-									    <option value="3">Arrival address: <%= t.getPickUpPoints().get(0).getArrivalAddress() %></option>
-									    <option value="4">Price: <%= t.getPickUpPoints().get(0).getPrice() %></option>
-									    <option value="5">Km: <%= t.getPickUpPoints().get(0).getKm() %></option>								
-	                            <% } %>
-                                </select>
+                           <td> <!-- view pick-up-points button samt Modal-vindue -->
+                                <button class="btn btn-default" data-toggle="modal" data-target="#modalForTrip<%=t.getId()%>">View</button>
+	                            			
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="modalForTrip<%=t.getId()%>" role="dialog">
+                                          
+                                          <div class="modal-dialog modal-lg">
+                                          
+                                            <!-- Modal indhold -->
+                                            <div class="modal-content">
+                                            
+                                              <!-- Modal header -->
+                                              <div class="modal-header">
+                                                <h4 class="modal-title">Pick Up Points</h4>
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>                   
+                                              </div>  
+                                              
+                                              <!-- Modal body -->
+                                              <div class="modal-body">  
+                                 <% if(t.getPickUpPoints().size() != 0) { %>  
+                                        <div class="row">   
+                                            <div class="col">
+		                                            <ul class="nav flex-column nav-pills">                                                                          
+			                                    	                            
+					                            <% for(PickUpPoint p : t.getPickUpPoints()) { %>  		
+					                            		                            
+			                                        <li class="nav-item">
+			                                            <a class="nav-link showPickUpPointLinks" href="javascript:void(0)" onclick="showPickUpPointInfo(<%=p.getId()%>, this)">Pick-up-point<%=p.getId()%></a>
+			                                        </li> 
+			                                        
+			                                        <!-- indeholder info om pick-up-point - denne span er altid usynlig. Teksten i den bliver brugt til at fylde på textarea alt efter hvilken pick-up-point link der klikkes på -->
+			                                        <span id="pickUpPoint<%=p.getId()%>_info" class="d-none">Jumper: <%= p.getJumper().getName() %>&#010;Departure address: <%= p.getDepartureAddress() %>&#010;Arrival address: <%= p.getArrivalAddress() %>&#010;Price: <%= p.getPrice() %>&#010;Km: <%= p.getKm() %></span>		                                                        
+											        											        									
+								                <% } %>  
+								                
+						                            </ul>
+				                            </div>
+				                            <div class="col">
+				                                <!-- her fyldes pick-up-point oplysningerne når der vælges en pick-up-point -->
+				                                <textarea readonly class="pickUpPoint_textarea form-control mb-3" rows="5"></textarea>  
+				                            </div>
+				                        </div>
+					                
+				                <% } else { %> 
+				                    <textarea readonly class="form-control mb-3" rows="5">No pick-up-points added to this trip yet!</textarea>
+				                <% } %> 
+					                    
+                                                 <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                     Close
+                                                 </button>                                                 
+                                                 
+                                                 <a href="javascript:void(0)" id="removePickUpPoint" class="btn btn-danger" disabled="true">
+                                                     Remove
+                                                 </a>   
+  
+									            <!-- add-formular -->               
+									            <main class="my-form mt-4 mb-3">
+									                <div class="container col-md-12">
+									                    <div class="row justify-content-center">
+									                        <div class="col-md-10">
+									                                <div class="card">
+									                                    <div class="card-header">Add pick-up-point</div>
+									                                    <div class="card-body">
+									                                        <form name="my-form" action="Trips" method="post">
+									            
+									                                            <div class="form-group row">
+									                                                <label class="col-md-4 col-form-label text-md-right">Departure Address</label>
+									                                                <div class="col-md-6">
+									                                                    <input type="text" class="form-control" name="departureAddress" required="true">
+									                                                </div>
+									                                            </div>
+									            
+									                                            <div class="form-group row">
+									                                                <label class="col-md-4 col-form-label text-md-right">Arrival Address</label>
+									                                                <div class="col-md-6">
+									                                                    <input type="text" class="form-control" name="arrivalAddress" required="true">
+									                                                </div>
+									                                            </div>  
+									                                            
+	                                                                            <div class="form-group row">
+	                                                                                <label class="col-md-4 col-form-label text-md-right">Price</label>
+	                                                                                <div class="col-md-6">
+	                                                                                    <input type="text" class="form-control" name="price" required="true">
+	                                                                                </div>
+	                                                                            </div>  
+	                                                                            
+	                                                                            <div class="form-group row">
+	                                                                                <label class="col-md-4 col-form-label text-md-right">KM</label>
+	                                                                                <div class="col-md-6">
+	                                                                                    <input type="text" class="form-control" name="km" required="true">
+	                                                                                </div>
+	                                                                            </div>   
+	                                                                         
+	                                                                            <!-- skjult input-felt der indeholder tripId -->  
+	                                                                            <input type="hidden" class="form-control" name="tripId" value="<%= t.getId() %>">                                                                           								                                                                             
+									            
+									                                            <div class="col-md-6 offset-md-4">
+									                                                <button type="submit" class="btn btn-primary">
+									                                                Add
+									                                                </button>
+									                                            </div>                                          
+									                                       </form>
+									                                    </div> <!-- card-body -->
+									                                </div> <!-- card -->
+									                            </div> <!-- yderste column -->
+									                        </div> <!-- yderste row -->
+									                    </div>  <!-- container i login formularen -->         
+									               </main> <!-- add formularen -->                                                 
+                                                                                                                                                           						                  
+							                  </div> <!-- modal body slutter her -->
+							                  
+							                </div> <!-- modal indhold slutter her -->
+							                
+							              </div> <!-- modal dialog slutter her -->
+							            </div> <!-- modal vinduet slutter her -->   	                                                                                  	                                									  	                            
                            </td>
-                           <td class="actionsColumn">
-                               <a href="/Update?tripId=<%= t.getId() %>" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-success">
+                           <td id="actions_td">
+                               <a id="edit_link" href="/Update?tripId=<%= t.getId() %>" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-success">
                                    <span class="fa fa-edit"></span> 
                                </a>
                                <a href="/Delete?tripId=<%= t.getId() %>" data-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-danger">
@@ -263,7 +371,7 @@
                      <% } %>
                 </tbody>
             </table>              
-        </div>     
+        </div>           
 
     </div>
 
