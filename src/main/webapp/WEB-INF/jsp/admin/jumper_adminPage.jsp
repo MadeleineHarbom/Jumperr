@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"
+	import="java.util.List,model.*,storage.LocalStorage"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,9 +13,12 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
-	
-<!-- Bootstrap spinner vises i bootstrap version 4.2 -->	
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+<!-- Bootstrap spinner vises i bootstrap version 4.2 -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+	crossorigin="anonymous">
 
 <!-- Bootstrap glyphicons (icons) -->
 <link
@@ -23,6 +27,7 @@
 
 <!-- our CSS -->
 <link rel="stylesheet" type="text/css" href="../css/ourStyles.css">
+<link href="css/test2.css" rel="stylesheet" />
 
 <!-- our JavaScript -->
 <script src="../js/ourScripts.js" defer></script>
@@ -80,36 +85,25 @@
 					data-toggle="dropdown"> <span class="fa fa-user"></span>
 						Profile
 				</a>
+
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="/MyProfile">My profile</a> <a
 							class="dropdown-item" href="/ProfileSettings">Settings</a>
 
 						<div class="dropdown-divider"></div>
-
 						<!--  Logout -->
 						<a class="dropdown-item" href="/Logout">Logout</a>
 					</div></li>
-
 			</ul>
 		</div>
 		</nav>
-		
+
 		<div id="spinner" class="spinner-border spinner-border-lg d-none"></div>
 
 		<!-- Jumbotron - det er en form for header eller en udvidet header (hero-section) -->
 		<div class="jumbotron">
 
-			<div class="alert alert-warning mb-5">
-				<h4 class="alert-heading">Info!</h4>
-				<p>Please be aware that a Driver has the option to accept and
-					reject a passenger. If you have any questions, please feel free to
-					contact us.</p>
-				<hr />
-				<p>You will receive an email when the driver accepts your trip.</p>
-			</div>
-
-
-
+			
 			<form>
 				<h3>Search for a trip:</h3>
 				<div class="row">
@@ -128,36 +122,75 @@
 					<button class="btn btn-primary" onclick="searchForTrips_jumper()">Search</button>					
 				</div>
 			</form>
-			<br>
-			<br>
+			
+
+			
+			<br> <br>
 			<h4>Matches:</h4>
-			
-			<div class="card text-center mt-4">
-				<div class="card-block">
-					<h4 class="card-title">Trip</h4>
-					<p class="card-text text-left pl-3">
-						Trip information:
-					</p>
+
+
+			<%
+				for (Trip t : LocalStorage.getTrips()) {
+			%>
+
+			<div class="card bg-light mb-3">
+				<div class="card-header bg-dark text-success ont-weight-bold""><%=t.getDriver().getName()%></div>
+				<div class="card-body">
+
+					<div class="row">
+						<!-- Two columns -->
+						<div class="col">
+							<div class="card" style="width: 14rem;">
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item">Date: <%=t.getDate()%></li>
+									<li class="list-group-item">From: <%=t.getDepartureAddress()%></li>
+									<li class="list-group-item">To: <%=t.getArrivalAddress()%></li>
+									<li class="list-group-item">Departure: <%=t.getTimeOfDeparture()%></li>
+									<li class="list-group-item">Arrival: <%=t.getTimeOfArrival()%></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="col-6">2 of 3 (wider)</div>
+
+
+						<div class="col align-self-center">
+							<div class="card bg-light mb-3 ">
+								<div class="card-header text-center "><%=t.getDriver().getName()%>
+								</div>
+								<div class="card-body">
+
+
+									<div class="col">
+										<img class="rounded-circle mx-auto d-block"
+											src="${pageContext.request.contextPath}/Images/blankUser3.png"
+											style="width: 100px; height: 100px">
+									</div>
+
+
+
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Row closes here -->
 				</div>
-				<div class="card-footer bg-primary text-white"">Book a seat</div>
+				<!-- Card body closes here -->
+
+				<div class="card-footer  "">Book a seat</div>
 			</div>
-			
-			<div class="card text-center mt-4">
-				<div class="card-block">
-					<h4 class="card-title">Trip</h4>
-					<p class="card-text text-left pl-3">
-						Trip information:
-					</p>
-				</div>
-				<div class="card-footer bg-primary text-white">Book a seat</div>
-			</div>
+			<%
+				};
+			%>
+
+
 
 		</div>
 		<!-- Jumbotron closes here -->
-		
 
 	</div>
-
+	</div>
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -172,6 +205,5 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
-
 </body>
 </html>
