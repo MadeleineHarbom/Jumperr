@@ -141,7 +141,7 @@
 		                                                <label for="email_address" class="col-md-4 col-form-label text-md-right">Time of departure</label>
 		                                                <div class="col-md-6">
 		                                                    <input type="time" id="timefield1" class="form-control" name="timeOfDeparture" required="true">
-		                                                    <small id="errorTime1" class="text-muted form-errors">The time should not be before local time</small>
+		                                                    <small id="errorTime1" class="text-muted form-errors">The time should not be before local time unless it is a day in the future</small>
 		                                                </div>
 		                                            </div>
 		            
@@ -149,7 +149,7 @@
 		                                                <label for="address" class="col-md-4 col-form-label text-md-right">Time of arrival</label>
 		                                                <div class="col-md-6">
 		                                                    <input type="time" id="timefield2" class="form-control" name="timeOfArrival" required="true">
-		                                                    <small id="errorTime2" class="text-muted form-errors">The time should not be before time of departure</small>
+		                                                    <small id="errorTime2" class="text-muted form-errors">The time should not be before time of departure unless it is a day in the future</small>
 		                                                </div>
 		                                            </div>
 		            

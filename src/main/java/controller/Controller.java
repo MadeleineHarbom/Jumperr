@@ -8,8 +8,12 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
+
+import org.threeten.bp.LocalTime;
+
 import java.nio.channels.Channels;
 import java.nio.channels.WritableByteChannel;
+import java.time.LocalDate;
 
 //////////////////////////////////////////////////
 //various imports
@@ -113,6 +117,27 @@ public class Controller {
         LocalStorage.addTrip(trip);
 
         Controller.updateTripsInGoogleStorage(LocalStorage.getTrips(), "Trip.txt");
+    }
+
+    public static ArrayList<Trip> searchForTrips(String date, String timeOfDeparture) {
+
+        ArrayList<Trip> matches = new ArrayList<>();
+        LocalDate inputLocalDate = LocalDate.parse(date);
+        LocalTime inputLocalTime = LocalTime.parse(timeOfDeparture);
+
+        for (Trip t : LocalStorage.getTrips()) {
+            LocalDate tripLocalDate = LocalDate.parse(t.getDate());
+            LocalTime tripLocalTime = LocalTime.parse(t.getTimeOfDeparture());
+            LocalTime tripArrivalLocalTime = LocalTime.parse(t.getTimeOfArrival());
+
+            if (inputLocalDate.equals(tripLocalDate)) {
+                if (inputLocalTime.isAfter(tripLocalTime) && inputLocalTime.isBefore(tripArrivalLocalTime)) {
+                    matches.add(t);
+                }
+            }
+        }
+
+        return matches;
     }
 
     public static PickUpPoint getPickUpPointById(String pickuppointId) {

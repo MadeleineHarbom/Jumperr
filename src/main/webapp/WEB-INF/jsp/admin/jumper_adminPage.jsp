@@ -1,33 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import="java.util.ArrayList,model.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-<!-- Bootstrap CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	
-<!-- Bootstrap spinner vises i bootstrap version 4.2 -->	
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
-<!-- Bootstrap glyphicons (icons) -->
-<link
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-	rel="stylesheet">
-
-<!-- our CSS -->
-<link rel="stylesheet" type="text/css" href="../css/ourStyles.css">
-
-<!-- our JavaScript -->
-<script src="../js/ourScripts.js" defer></script>
-
-<title>Jumper</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		
+	<!-- www.fontawesome.com (icons) -->    
+    <link rel="stylesheet" type="text/css" href="../css/all.css">
+	
+	<!-- Bootstrap glyphicons (icons) -->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">		
+	
+	<!-- our CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/ourStyles.css">
+	
+	<!-- our JavaScript -->
+	<script src="../js/ourScripts.js" defer></script>
+	
+    <!-- www.fontawesome.com (icons) -->    
+    <script src="../js/all.js" defer></script>	
+	
+	<title>Jumper</title>
 </head>
 <body>
 
@@ -94,7 +91,14 @@
 		</div>
 		</nav>
 		
-		<div id="spinner" class="spinner-border spinner-border-lg d-none"></div>
+		<!-- bootstrap-spinner - den vises når der søges på trips -->
+		<div class="modal fade spinner-modal-lg" data-backdrop="static" data-keyboard="false" tabindex="-1">
+		    <div class="modal-dialog modal-sm">
+		        <div class="modal-content">
+		            <span class="fa fa-spinner fa-spin fa-5x"></span>
+		        </div>
+		    </div>
+		</div>
 
 		<!-- Jumbotron - det er en form for header eller en udvidet header (hero-section) -->
 		<div class="jumbotron">
@@ -108,56 +112,85 @@
 				<p>You will receive an email when the driver accepts your trip.</p>
 			</div>
 
-
-
-			<form>
-				<h3>Search for a trip:</h3>
+            <!-- søg på en trip -formular -->
+			<form class="mb-5" autocomplete="off" action="Jumper" method="post">
+				
+				<h3 class="mb-3">Search for a trip:</h3>
+				
 				<div class="row">
-					<div class="col">
-						<input type="text" class="form-control"
-							placeholder="Departure Address">
+				
+				    <!-- col-xm-12 er i Bootstrap-4 lavet om til: col-12 -->
+					<div class="col col-xl-3 col-lg-6 col-md-6 col-12 mb-3 autocomplete">
+						<input type="text" id="fromAddress" class="form-control" placeholder="Departure Address" name="departureAddress" required="true">
 					</div>
-					<div class="col">
-						<input type="text" class="form-control"
-							placeholder="Time of departure">
+					
+					<div class="col col-xl-3 col-lg-6 col-md-6 col-12 mb-3 autocomplete">
+						<input type="text" id="toAddress" class="form-control" placeholder="Arrival address" name="arrivalAddress" required="true">
 					</div>
-					<div class="col">
-						<input type="text" class="form-control" placeholder="Post code">
+					
+					<div class="col col-xl-2 col-lg-3 col-md-6 col-12 mb-3">
+						<input type="date" id="datefield" class="form-control col-xs-2" name="date" required="true">
 					</div>
+					
+                    <div class="col col-xl-2 col-lg-3 col-md-6 col-12 mb-3">
+                        <input type="time" id="timefield1" class="form-control col-xs-2" name="timeOfDeparture" required="true">
+                    </div>					
 
-					<button class="btn btn-primary" onclick="searchForTrips_jumper()">Search</button>					
+                    <div class="col col-xl-2 col-lg-6 col-md-6 col-12">
+					   <button class="btn btn-primary btn-block" onclick="searchForTrips_jumper()">Search</button>	
+				    </div>				
 				</div>
 			</form>
-			<br>
-			<br>
-			<h4>Matches:</h4>
 			
-			<div class="card text-center mt-4">
-				<div class="card-block">
-					<h4 class="card-title">Trip</h4>
-					<p class="card-text text-left pl-3">
-						Trip information:
-					</p>
-				</div>
-				<div class="card-footer bg-primary text-white"">Book a seat</div>
+			<!-- ingen søgeresultater fundet -->
+			<div id="noResults" class="container text-center">
+			     <h4 class="font-weight-bold">${noResults}</h4>
 			</div>
+						
+			<!-- søge-resultater -->	
+			<%! @SuppressWarnings("unchecked") %>
+			<% ArrayList<Trip> matches = (ArrayList<Trip>) request.getAttribute("matches"); %>
 			
-			<div class="card text-center mt-4">
-				<div class="card-block">
-					<h4 class="card-title">Trip</h4>
-					<p class="card-text text-left pl-3">
-						Trip information:
-					</p>
-				</div>
-				<div class="card-footer bg-primary text-white">Book a seat</div>
-			</div>
+			<% if(matches != null) { %>
+	            <% for(Trip t : matches) { %>					
+					<div class="row mb-5">
+					     <div class="card-group col-sm-12">
+					     
+					            <!-- info om driver -->
+						        <div class="card">
+									  <img class="card-img-top" src="../images/avatar.png" alt="Card image">
+									  <div class="card-body">
+									    <h4 class="card-title"><%= t.getDriver().getName() %></h4>
+									    <p class="card-text">
+									         <span class="fa fa-star checked" aria-hidden="true"></span>
+									         <span class="fa fa-star checked" aria-hidden="true"></span>
+									         <span class="fa fa-star checked" aria-hidden="true"></span>
+									         <span class="fa fa-star" aria-hidden="true"></span>
+									         <span class="fa fa-star" aria-hidden="true"></span>							         
+									    </p>
+									    <a href="#" class="btn btn-primary">See Profile</a>
+									  </div>
+						        </div>
+						    
+						        <!-- info om trip -->
+			                    <div class="card" id="trip-info-jumper-search-result">
+			                        <div class="card-body text-left d-flex flex-column">
+			                            <h3 class="card-title font-weight-bold">Departure: <%= t.getDate() %> <%= t.getTimeOfDeparture() %></h3>
+			                            <p class="card-text">From: <%= t.getDepartureAddress() %></p>       
+		                                <p class="card-text mb-5">To: <%= t.getArrivalAddress() %></p>
+		                                <p class="card-text"> <span data-toggle="tooltip" title="<%= t.getAvailableSeats() %> seats available"><% for(int i = 0; i < t.getAvailableSeats(); i++) { %> <span class="fas fa-chair text-primary"></span><% } %></span></p>
+		                                <p class="card-text font-weight-bold">Price per km: 2 kr.</p>         
+			                            <button class="btn btn-primary btn-lg mt-auto">Book a seat</button>                  
+			                        </div>
+			                    </div>
+		                </div>	    
+				    </div>			
+				<% } %>
+			<% } %>
 
-		</div>
-		<!-- Jumbotron closes here -->
+		</div> <!-- Jumbotron slutter her -->
 		
-
 	</div>
-
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
